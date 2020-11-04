@@ -19,9 +19,27 @@
     <ClCompile Include="scenebasic.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
+    <ClCompile Include="scenepbr.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="includes\glslprogram.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="includes\objmesh.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="includes\plane.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
+    <ClCompile Include="includes\trianglemesh.cpp">
+      <Filter>Quelldateien</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stb_image.h">
+      <Filter>Quelldateien</Filter>
+    </ClInclude>
+    <ClInclude Include="scenepbr.h">
       <Filter>Quelldateien</Filter>
     </ClInclude>
   </ItemGroup>

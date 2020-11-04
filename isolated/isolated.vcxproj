@@ -21,10 +21,16 @@
   <ItemGroup>
     <ClCompile Include="glad.c" />
     <ClCompile Include="glutils.cpp" />
+    <ClCompile Include="includes\glslprogram.cpp" />
+    <ClCompile Include="includes\objmesh.cpp" />
+    <ClCompile Include="includes\plane.cpp" />
+    <ClCompile Include="includes\trianglemesh.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="scenebasic.cpp" />
+    <ClCompile Include="scenepbr.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="scenepbr.h" />
     <ClInclude Include="stb_image.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

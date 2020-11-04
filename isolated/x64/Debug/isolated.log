@@ -1,6 +1,1 @@
-﻿  glad.c
-  scenebasic.cpp
-C:\Users\Fabian\Documents\Master\OpenGL\IsolatedOpenGlProject\isolated\scenebasic.cpp(182,104): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\Fabian\Documents\Master\OpenGL\IsolatedOpenGlProject\isolated\scenebasic.cpp(203,104): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-C:\Users\Fabian\Documents\Master\OpenGL\IsolatedOpenGlProject\isolated\scenebasic.cpp(333,69): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  isolated.vcxproj -> C:\Users\Fabian\Documents\Master\OpenGL\IsolatedOpenGlProject\x64\Debug\isolated.exe
+﻿  isolated.vcxproj -> C:\Users\Nutzer\Documents\Dev\openGLPbrExample\x64\Debug\isolated.exe
