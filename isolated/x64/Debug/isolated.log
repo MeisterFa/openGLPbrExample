@@ -1,2 +1,6 @@
-﻿  scenepbr.cpp
+﻿  main.cpp
+  scenepbr.cpp
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\scenepbr.cpp(85,29): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\scenepbr.cpp(90,29): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   isolated.vcxproj -> C:\Users\Nutzer\Documents\Dev\openGLPbrExample\x64\Debug\isolated.exe

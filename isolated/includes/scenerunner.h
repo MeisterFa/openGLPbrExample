@@ -117,53 +117,16 @@ private:
 
     void mainLoop(GLFWwindow * window, std::unique_ptr<Scene> scene) {
         int width, height;
-        int keypress;
+        std::string keypress;
         scene->setDimensions(fbw, fbh);
         scene->initScene();
         scene->resize(fbw, fbh);
 
         while( ! glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) ) {
-            keypress = INT_MAX;
+            keypress = "";
 
             GLUtils::checkForOpenGLError(__FILE__,__LINE__);
-            
-            if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
-                keypress = 1;
-            else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
-                keypress = 2;
-            else if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
-                keypress = 3;
-            else if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
-                keypress = 4;
-            else if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
-                keypress = 5;
-            else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
-                keypress = 6;
-            else if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
-                keypress = 7;
-            else if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
-                keypress = 8;
-            else if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS)
-                keypress = 9;
-            else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
-                keypress = 0;
-            else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
-                keypress = 10;
-            else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
-                keypress = 11;
-            else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
-                keypress = 12;
-            else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
-                keypress = 13;
-            else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
-                keypress = 14;
-            else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
-                keypress = 15;
-            else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
-                keypress = 16;
-            else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-                keypress = 17; 
-
+            processKeypress(window, keypress);
             scene->update2(float(glfwGetTime()), keypress);
             scene->render();
             glfwSwapBuffers(window);
@@ -175,5 +138,41 @@ private:
 			if (state == GLFW_PRESS)
 				scene->animate(!scene->animating());
         }
+    }
+
+    void processKeypress(GLFWwindow* window, std::string& keypress)
+    {
+        if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+            keypress = "gold";
+        else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+            keypress = "copper";
+        else if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+            keypress = "aluminum";
+        else if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+            keypress = "titanium";
+        else if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
+            keypress = "silver";
+        else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
+            keypress = "noMetal";
+        else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+            keypress = "forward";
+        else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+            keypress = "backward";
+        else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+            keypress = "left";
+        else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+            keypress = "right";
+        else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+            keypress = "arrow_up";
+        else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+            keypress = "arrow_down";
+        else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+            keypress = "arrow_left";
+        else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+            keypress = "arrow_right";
+        else if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+            keypress = "plus_roughness";
+        else if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+            keypress = "minus_roughness";
     }
 };

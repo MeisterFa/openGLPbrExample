@@ -6,16 +6,14 @@
 ScenePbr::ScenePbr() : plane(20, 20, 1, 1), tPrev(0.0f), lightPos(5.0f, 5.0f, 5.0f, 1.0f) {
 	mesh = ObjMesh::load("../media/spot/spot_triangulated.obj");
 	camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f));
+	roughness = 0.01f; 
 }
 
 void ScenePbr::initScene() {
 	compileAndLinkShader();
 
 	glEnable(GL_DEPTH_TEST);
-	objPos = 7; 
-	cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
-	cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	objMaterial = "gold";
 	view = camera.GetViewMatrix(); 
 	
 	projection = glm::perspective(glm::radians(50.0f),(float)width/height, 0.5f, 100.0f);
@@ -46,50 +44,53 @@ void ScenePbr::update(float t) {
 
 }
 
-void ScenePbr::update2(float t, int k) {
+void ScenePbr::update2(float t, std::string keypress) {
 	float deltaT = t - tPrev;
-	float cameraSpeed = 2.5f * deltaT;
-
-	if (k < 10)
-		objPos = k; 
-	else if (k == 10)
-		cameraPos += cameraSpeed * cameraFront;
-	else if (k == 11)
-		cameraPos -= cameraSpeed * cameraFront;
-	else if (k == 12)
-		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	else if (k == 13)
-		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-	else if (k == 14)
-	{
-
-	}
-	else if (k == 15)
-	{
-
-	}
-	else if (k == 16)
-	{
-
-	}
-	else if (k == 17)
-	{
-
-	}
-
-
-	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
-
-	if (tPrev == 0.0f) 
+	if (tPrev == 0.0f)
 		deltaT = 0.0f;
-
 	tPrev = t;
+
+	processKeyboardInput(keypress, deltaT);
+	view = camera.GetViewMatrix();
+
 	if (animating()) {
 		lightAngle = glm::mod(lightAngle + deltaT * lightRotationSpeed, glm::two_pi<float>());
 		lightPos.x = glm::cos(lightAngle) * 7.0f;
 		lightPos.y = 3.0f;
 		lightPos.z = glm::sin(lightAngle) * 7.0f;
 	}
+}
+
+void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
+{
+	if (keypress == "forward")
+		camera.ProcessKeyboard(FORWARD, deltaT);
+	else if (keypress == "backward")
+		camera.ProcessKeyboard(BACKWARD, deltaT);
+	else if (keypress == "left")
+		camera.ProcessKeyboard(LEFT, deltaT);
+	else if (keypress == "right")
+		camera.ProcessKeyboard(RIGHT, deltaT);
+	else if (keypress == "arrow_up")
+		camera.ProcessKeyboard(ARROW_UP, deltaT);
+	else if (keypress == "arrow_down")
+		camera.ProcessKeyboard(ARROW_DOWN, deltaT);
+	else if (keypress == "arrow_left")
+		camera.ProcessKeyboard(ARROW_LEFT, deltaT);
+	else if (keypress == "arrow_right")
+		camera.ProcessKeyboard(ARROW_RIGHT, deltaT);
+	else if (keypress == "plus_roughness")
+	{
+		if (roughness < 0.99f)
+			roughness += 0.5 * deltaT;
+	}
+	else if (keypress == "minus_roughness")
+	{
+		if (roughness > 0.02f)
+			roughness -= 0.5 * deltaT;
+	}
+	else if (keypress != "")
+		objMaterial = keypress;
 }
 
 void ScenePbr::render()
@@ -138,35 +139,34 @@ void ScenePbr::drawScene() {
 	// Draw metal cows
 	float metalRough = 0.43f;
 
-	if (objPos < numCows)
-	{
-		float rough = (objPos + 1) * (1.0f / numCows);
-		drawSpot(glm::vec3(0, 0, 1.5f), rough, 0, cowBaseColor);
-	}
-	else if (objPos == 5)
+	if (objMaterial == "gold")
 	{
 		// Gold
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(1, 0.71f, 0.29f));
 	}
-	else if (objPos == 6)
+	else if (objMaterial == "copper")
 	{
 		// Copper
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.64f, 0.54f));
 	}
-	else if (objPos == 7)
+	else if (objMaterial == "aluminum")
 	{
 		// Aluminum
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.91f, 0.92f, 0.92f));
 	}
-	else if (objPos == 8)
+	else if (objMaterial == "titanium")
 	{
 		// Titanium
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.542f, 0.497f, 0.449f));
 	}
-	else if (objPos == 9)
+	else if (objMaterial == "silver")
 	{
 		// Silver
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.93f, 0.88f));
+	}
+	else 
+	{
+		drawSpot(glm::vec3(0, 0, 1.5f), roughness, 0, cowBaseColor);
 	}
 }
 

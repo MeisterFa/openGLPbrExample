@@ -15,8 +15,7 @@ private:
     Plane plane;
     std::unique_ptr<ObjMesh> mesh;
     Camera camera;
-	float tPrev, lightAngle, lightRotationSpeed;
-    int objPos;
+    float tPrev, lightAngle, lightRotationSpeed, roughness;
     std::string objMaterial; 
 	glm::vec4 lightPos;
     glm::vec3 cameraPos, cameraFront, cameraUp;
@@ -33,8 +32,8 @@ public:
 
     void initScene();
     void update( float t );
-    void update2(float t, int k);
     void update2(float t, std::string k);
+    void processKeyboardInput(std::string& keypress, float deltaT);
     void render();
     void resize(int, int);
 };

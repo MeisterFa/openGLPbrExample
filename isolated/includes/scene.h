@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glm/glm.hpp>
+#include <string>
 
 class Scene
 {
@@ -30,7 +31,7 @@ public:
       */
     virtual void update( float t ) = 0;
 
-    virtual void update2(float t, int k) = 0; 
+    virtual void update2(float t, std::string k) = 0; 
     /**
       Draw your scene.
       */
