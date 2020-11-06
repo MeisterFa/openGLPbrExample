@@ -26,7 +26,6 @@
     <ClCompile Include="includes\plane.cpp" />
     <ClCompile Include="includes\trianglemesh.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="scenebasic.cpp" />
     <ClCompile Include="scenepbr.cpp" />
   </ItemGroup>
   <ItemGroup>

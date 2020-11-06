@@ -30,6 +30,7 @@ public:
       */
     virtual void update( float t ) = 0;
 
+    virtual void update2(float t, int k) = 0; 
     /**
       Draw your scene.
       */

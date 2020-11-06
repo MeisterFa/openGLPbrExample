@@ -117,14 +117,54 @@ private:
 
     void mainLoop(GLFWwindow * window, std::unique_ptr<Scene> scene) {
         int width, height;
+        int keypress;
         scene->setDimensions(fbw, fbh);
         scene->initScene();
         scene->resize(fbw, fbh);
 
         while( ! glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) ) {
+            keypress = INT_MAX;
+
             GLUtils::checkForOpenGLError(__FILE__,__LINE__);
-			
-            scene->update(float(glfwGetTime()));
+            
+            if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+                keypress = 1;
+            else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+                keypress = 2;
+            else if (glfwGetKey(window, GLFW_KEY_3) == GLFW_PRESS)
+                keypress = 3;
+            else if (glfwGetKey(window, GLFW_KEY_4) == GLFW_PRESS)
+                keypress = 4;
+            else if (glfwGetKey(window, GLFW_KEY_5) == GLFW_PRESS)
+                keypress = 5;
+            else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
+                keypress = 6;
+            else if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
+                keypress = 7;
+            else if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
+                keypress = 8;
+            else if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS)
+                keypress = 9;
+            else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+                keypress = 0;
+            else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
+                keypress = 10;
+            else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
+                keypress = 11;
+            else if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
+                keypress = 12;
+            else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
+                keypress = 13;
+            else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+                keypress = 14;
+            else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+                keypress = 15;
+            else if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+                keypress = 16;
+            else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+                keypress = 17; 
+
+            scene->update2(float(glfwGetTime()), keypress);
             scene->render();
             glfwSwapBuffers(window);
             glfwGetFramebufferSize(window, &width, &height);

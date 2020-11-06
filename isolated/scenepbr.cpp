@@ -5,19 +5,19 @@
 
 ScenePbr::ScenePbr() : plane(20, 20, 1, 1), tPrev(0.0f), lightPos(5.0f, 5.0f, 5.0f, 1.0f) {
 	mesh = ObjMesh::load("../media/spot/spot_triangulated.obj");
+	camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f));
 }
 
 void ScenePbr::initScene() {
 	compileAndLinkShader();
 
 	glEnable(GL_DEPTH_TEST);
-
-	view = glm::lookAt(
-		glm::vec3(0.0f, 4.0f, 7.0f), 
-		glm::vec3(0.0f, 0.0f, 0.0f), 
-		glm::vec3(0.0f, 1.0f, 0.0f)
-	);
-
+	objPos = 7; 
+	cameraPos = glm::vec3(0.0f, 0.0f, 5.0f);
+	cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+	cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+	view = camera.GetViewMatrix(); 
+	
 	projection = glm::perspective(glm::radians(50.0f),(float)width/height, 0.5f, 100.0f);
 
 	lightAngle = 0.0f;
@@ -39,6 +39,53 @@ void ScenePbr::update(float t) {
 	tPrev = t;
 	if (animating()) {
 		lightAngle = glm::mod( lightAngle + deltaT * lightRotationSpeed, glm::two_pi<float>() );
+		lightPos.x = glm::cos(lightAngle) * 7.0f;
+		lightPos.y = 3.0f;
+		lightPos.z = glm::sin(lightAngle) * 7.0f;
+	}
+
+}
+
+void ScenePbr::update2(float t, int k) {
+	float deltaT = t - tPrev;
+	float cameraSpeed = 2.5f * deltaT;
+
+	if (k < 10)
+		objPos = k; 
+	else if (k == 10)
+		cameraPos += cameraSpeed * cameraFront;
+	else if (k == 11)
+		cameraPos -= cameraSpeed * cameraFront;
+	else if (k == 12)
+		cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	else if (k == 13)
+		cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+	else if (k == 14)
+	{
+
+	}
+	else if (k == 15)
+	{
+
+	}
+	else if (k == 16)
+	{
+
+	}
+	else if (k == 17)
+	{
+
+	}
+
+
+	view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
+	if (tPrev == 0.0f) 
+		deltaT = 0.0f;
+
+	tPrev = t;
+	if (animating()) {
+		lightAngle = glm::mod(lightAngle + deltaT * lightRotationSpeed, glm::two_pi<float>());
 		lightPos.x = glm::cos(lightAngle) * 7.0f;
 		lightPos.y = 3.0f;
 		lightPos.z = glm::sin(lightAngle) * 7.0f;
@@ -85,27 +132,42 @@ void ScenePbr::drawScene() {
 	drawFloor();
 
 	// Draw dielectric cows with varying roughness
-	int numCows = 9;
+	int numCows = 5;
 	glm::vec3 cowBaseColor(0.1f, 0.33f, 0.17f);
-	for (int i = 0; i < numCows; i++) {
-		float cowX = i * (10.0f / (numCows - 1)) - 5.0f;
-		float rough = (i + 1) * (1.0f / numCows);
-		drawSpot(glm::vec3(cowX, 0, 0), rough, 0, cowBaseColor);
-	}
 
 	// Draw metal cows
 	float metalRough = 0.43f;
-	// Gold
-	drawSpot(glm::vec3(-3.0f, 0.0f, 3.0f), metalRough, 1, glm::vec3(1, 0.71f, 0.29f));
-	// Copper
-	drawSpot(glm::vec3(-1.5f, 0.0f, 3.0f), metalRough, 1, glm::vec3(0.95f, 0.64f, 0.54f));
-	// Aluminum
-	drawSpot(glm::vec3(-0.0f, 0.0f, 3.0f), metalRough, 1, glm::vec3(0.91f, 0.92f, 0.92f));
-	// Titanium
-	drawSpot(glm::vec3(1.5f, 0.0f, 3.0f), metalRough, 1, glm::vec3(0.542f, 0.497f, 0.449f));
-	// Silver
-	drawSpot(glm::vec3(3.0f, 0.0f, 3.0f), metalRough, 1, glm::vec3(0.95f, 0.93f, 0.88f));
 
+	if (objPos < numCows)
+	{
+		float rough = (objPos + 1) * (1.0f / numCows);
+		drawSpot(glm::vec3(0, 0, 1.5f), rough, 0, cowBaseColor);
+	}
+	else if (objPos == 5)
+	{
+		// Gold
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(1, 0.71f, 0.29f));
+	}
+	else if (objPos == 6)
+	{
+		// Copper
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.64f, 0.54f));
+	}
+	else if (objPos == 7)
+	{
+		// Aluminum
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.91f, 0.92f, 0.92f));
+	}
+	else if (objPos == 8)
+	{
+		// Titanium
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.542f, 0.497f, 0.449f));
+	}
+	else if (objPos == 9)
+	{
+		// Silver
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.93f, 0.88f));
+	}
 }
 
 void ScenePbr::drawFloor() {

@@ -16,9 +16,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
-    <ClCompile Include="scenebasic.cpp">
-      <Filter>Quelldateien</Filter>
-    </ClCompile>
     <ClCompile Include="scenepbr.cpp">
       <Filter>Quelldateien</Filter>
     </ClCompile>
