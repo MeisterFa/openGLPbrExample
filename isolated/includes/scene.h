@@ -32,6 +32,8 @@ public:
     virtual void update( float t ) = 0;
 
     virtual void update2(float t, std::string k) = 0; 
+
+    virtual void updateMouseMovement(double xpos, double ypos) = 0;
     /**
       Draw your scene.
       */

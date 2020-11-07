@@ -17,10 +17,10 @@ class SceneRunner {
 private:
     GLFWwindow * window;
     int fbw, fbh;
-	bool debug;           // Set true to enable debug messages
-
+    bool debug;           // Set true to enable debug messages
+    bool animate;
 public:
-    SceneRunner(const std::string & windowTitle, int width = WIN_WIDTH, int height = WIN_HEIGHT, int samples = 0) : debug(true) {
+    SceneRunner(const std::string & windowTitle, int width = WIN_WIDTH, int height = WIN_HEIGHT, int samples = 0) : debug(true), animate(false) {
         // Initialize GLFW
         if( !glfwInit() ) exit( EXIT_FAILURE );
 
@@ -36,7 +36,6 @@ public:
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
         glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
-
         if(debug)
 			glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
         if(samples > 0) {
@@ -107,6 +106,7 @@ public:
     }
 
 private:
+
     static void printHelpInfo(const char * exeFile,  std::map<std::string, std::string> & sceneData) {
         printf("Usage: %s recipe-name\n\n", exeFile);
         printf("Recipe names: \n");
@@ -117,6 +117,7 @@ private:
 
     void mainLoop(GLFWwindow * window, std::unique_ptr<Scene> scene) {
         int width, height;
+        double xpos, ypos;
         std::string keypress;
         scene->setDimensions(fbw, fbh);
         scene->initScene();
@@ -126,17 +127,24 @@ private:
             keypress = "";
 
             GLUtils::checkForOpenGLError(__FILE__,__LINE__);
+
             processKeypress(window, keypress);
             scene->update2(float(glfwGetTime()), keypress);
+            if (glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED)
+            {
+                glfwGetCursorPos(window, &xpos, &ypos);
+                scene->updateMouseMovement(xpos, ypos);
+            }
             scene->render();
+
             glfwSwapBuffers(window);
             glfwGetFramebufferSize(window, &width, &height);
-            glViewport(0, 0, width, height);
+            scene->resize( width, height);
 
             glfwPollEvents();
-			int state = glfwGetKey(window, GLFW_KEY_SPACE);
-			if (state == GLFW_PRESS)
-				scene->animate(!scene->animating());
+			
+			
+			scene->animate(animate);
         }
     }
 
@@ -174,5 +182,13 @@ private:
             keypress = "plus_roughness";
         else if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
             keypress = "minus_roughness";
+        else if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+        else if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
+            animate = false;
+        else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+            animate = true;
     }
 };

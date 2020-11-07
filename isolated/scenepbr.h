@@ -33,6 +33,7 @@ public:
     void initScene();
     void update( float t );
     void update2(float t, std::string k);
+    void updateMouseMovement(double xpos, double ypos);
     void processKeyboardInput(std::string& keypress, float deltaT);
     void render();
     void resize(int, int);

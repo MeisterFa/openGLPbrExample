@@ -51,7 +51,6 @@ void ScenePbr::update2(float t, std::string keypress) {
 	tPrev = t;
 
 	processKeyboardInput(keypress, deltaT);
-	view = camera.GetViewMatrix();
 
 	if (animating()) {
 		lightAngle = glm::mod(lightAngle + deltaT * lightRotationSpeed, glm::two_pi<float>());
@@ -59,6 +58,11 @@ void ScenePbr::update2(float t, std::string keypress) {
 		lightPos.y = 3.0f;
 		lightPos.z = glm::sin(lightAngle) * 7.0f;
 	}
+}
+
+void ScenePbr::updateMouseMovement(double xpos, double ypos)
+{
+	camera.ProcessMouseMovement(xpos, ypos);
 }
 
 void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
@@ -96,6 +100,7 @@ void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
 void ScenePbr::render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	view = camera.GetViewMatrix();
 	prog.setUniform("Light[0].Position", view * lightPos);
 	drawScene();
 }
@@ -133,8 +138,7 @@ void ScenePbr::drawScene() {
 	drawFloor();
 
 	// Draw dielectric cows with varying roughness
-	int numCows = 5;
-	glm::vec3 cowBaseColor(0.1f, 0.33f, 0.17f);
+	glm::vec3 cowBaseColor(0.9f, 0.13f, 0.17f);
 
 	// Draw metal cows
 	float metalRough = 0.43f;
