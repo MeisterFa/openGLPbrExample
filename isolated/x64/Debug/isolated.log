@@ -1,4 +1,12 @@
 ﻿  main.cpp
 C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\includes\camera.h(99,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\includes\camera.h(100,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  scenepbr.cpp
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\includes\camera.h(99,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\includes\camera.h(100,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\scenepbr.cpp(65,36): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\scenepbr.cpp(65,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\scenepbr.cpp(89,29): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Nutzer\Documents\Dev\openGLPbrExample\isolated\scenepbr.cpp(94,29): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  Generating Code...
   isolated.vcxproj -> C:\Users\Nutzer\Documents\Dev\openGLPbrExample\x64\Debug\isolated.exe

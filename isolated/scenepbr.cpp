@@ -4,8 +4,8 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 ScenePbr::ScenePbr() : plane(20, 20, 1, 1), tPrev(0.0f), lightPos(5.0f, 5.0f, 5.0f, 1.0f) {
-	mesh = ObjMesh::load("../media/spot/spot_triangulated.obj");
-	camera = Camera(glm::vec3(0.0f, 0.0f, 5.0f));
+	mesh = ObjMesh::load("../media/Chess_Rook.obj");
+	camera = Camera(glm::vec3(0.0f, 0.0f, 10.0f));
 	roughness = 0.01f; 
 }
 
@@ -23,9 +23,9 @@ void ScenePbr::initScene() {
 
 	prog.setUniform("Light[0].L", glm::vec3(45.0f));
 	prog.setUniform("Light[0].Position", view * lightPos);
-	prog.setUniform("Light[1].L", glm::vec3(0.3f));
+	prog.setUniform("Light[1].L", glm::vec3(4.6f));
 	prog.setUniform("Light[1].Position", glm::vec4(0, 7.15f, -1.0f, 0));
-	prog.setUniform("Light[2].L", glm::vec3(45.f));
+	prog.setUniform("Light[2].L", glm::vec3(65.f));
 	prog.setUniform("Light[2].Position", view * glm::vec4(-7, 3, 7, 1));
 	prog.setUniform("Light[3].L", glm::vec3(45.0f));
 	prog.setUniform("Light[3].Position", view * glm::vec4(7, 3, 7, 1));
@@ -124,7 +124,7 @@ void ScenePbr::setMatrices()
 void ScenePbr::compileAndLinkShader() {
 	try {
 		prog.compileShader("shader/pbr.vert.glsl");
-		prog.compileShader("shader/pbr.frag.glsl");
+		prog.compileShader("shader/pbr_fabian.frag.glsl");
 		prog.link();
 		prog.use();
 	}
