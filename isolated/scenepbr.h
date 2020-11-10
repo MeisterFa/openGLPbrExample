@@ -17,7 +17,7 @@ private:
     Camera camera;
     float tPrev, lightAngle, lightRotationSpeed, roughness;
     std::string objMaterial; 
-	glm::vec4 lightPos;
+	glm::vec4 lightPos, lightPos1, lightPos2;
     glm::vec3 cameraPos, cameraFront, cameraUp;
 
     void setMatrices();
@@ -31,8 +31,7 @@ public:
     ScenePbr();
 
     void initScene();
-    void update( float t );
-    void update2(float t, std::string k);
+    void update(float t, std::string k);
     void updateMouseMovement(double xpos, double ypos);
     void processKeyboardInput(std::string& keypress, float deltaT);
     void render();

@@ -29,9 +29,7 @@ public:
       This is called prior to every frame.  Use this
       to update your animation.
       */
-    virtual void update( float t ) = 0;
-
-    virtual void update2(float t, std::string k) = 0; 
+    virtual void update(float t, std::string k) = 0; 
 
     virtual void updateMouseMovement(double xpos, double ypos) = 0;
     /**

@@ -129,7 +129,7 @@ private:
             GLUtils::checkForOpenGLError(__FILE__,__LINE__);
 
             processKeypress(window, keypress);
-            scene->update2(float(glfwGetTime()), keypress);
+            scene->update(float(glfwGetTime()), keypress);
             if (glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED)
             {
                 glfwGetCursorPos(window, &xpos, &ypos);
