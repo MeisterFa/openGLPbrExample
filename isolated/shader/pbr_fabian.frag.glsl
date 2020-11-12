@@ -77,8 +77,8 @@ vec3 microfacetModel( int lightIndex, vec3 position, vec3 n ) {
     float nDotV = dot( n, v );
   
     vec3 F = schlickFresnel(hDotV);         
-    vec3 kS = F;
-    vec3 kD = mix((vec3(1.0) - kS), vec3(0.0), Material.Metal);
+    
+    vec3 kD = mix((vec3(1.0) - F), vec3(0.0), Material.Metal);
 
     vec3 specBrdf = 0.25 * ggxDistribution(nDotH) * F * geomSmith(nDotV, nDotL);
 

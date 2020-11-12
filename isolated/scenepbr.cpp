@@ -23,7 +23,7 @@ void ScenePbr::initScene() {
 	prog.setUniform("Light[0].L", glm::vec3(45.0f));
 	prog.setUniform("Light[0].Position", view*lightPos);
 	prog.setUniform("Light[1].L", glm::vec3(3.0f));
-	prog.setUniform("Light[1].Position", lightPos1);
+	prog.setUniform("Light[1].Position", view * lightPos1);
 	prog.setUniform("Light[2].L", glm::vec3(40.0f));
 	prog.setUniform("Light[2].Position", view*lightPos2);
 }
@@ -86,7 +86,8 @@ void ScenePbr::render()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	view = camera.GetViewMatrix();
 	prog.setUniform("Light[0].Position", view * lightPos);
-	prog.setUniform("Light[2].Position", view * glm::vec4(5.0f, 3.0f, 5.0f, 1.0f));
+	prog.setUniform("Light[1].Position", view * lightPos1);
+	prog.setUniform("Light[2].Position", view * lightPos2);
 	drawScene();
 }
 
