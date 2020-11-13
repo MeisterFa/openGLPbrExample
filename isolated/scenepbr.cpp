@@ -4,7 +4,11 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 ScenePbr::ScenePbr() : plane(20, 20, 1, 1), tPrev(0.0f), lightPos(5.0f, 3.0f, 5.0f, 1.0f), lightPos1(0, 15.15f, -5.0f, 0), lightPos2(5.0f, 3.0f, 5.0f, 1.0f) {
-	mesh = ObjMesh::load("../media/Chess_Rook.obj");
+	meshNumber = 1; 
+	mesh1 = ObjMesh::load("../media/Chess_Rook.obj");
+	mesh2 = ObjMesh::load("../media/cow.obj");
+	mesh3 = ObjMesh::load("../media/bs_ears.obj");
+
 	camera = Camera(glm::vec3(0.0f, 1.5f, 10.0f));
 	roughness = 0.01f; 
 }
@@ -67,6 +71,12 @@ void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
 		camera.ProcessKeyboard(ARROW_LEFT, deltaT);
 	else if (keypress == "arrow_right")
 		camera.ProcessKeyboard(ARROW_RIGHT, deltaT);
+	else if (keypress == "meshOne")
+		meshNumber = 1; 
+	else if (keypress == "meshTwo")
+		meshNumber = 2;
+	else if (keypress == "meshThree")
+		meshNumber = 3;
 	else if (keypress == "plus_roughness")
 	{
 		if (roughness < 0.99f)
@@ -179,8 +189,25 @@ void ScenePbr::drawSpot(const glm::vec3 & pos, float rough, int metal, const glm
 	prog.setUniform("Material.Metal", metal);
 	prog.setUniform("Material.Color", color);
 	model = glm::translate(model, pos);
-	model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-	setMatrices();
-	mesh->render();
+	if (meshNumber == 1)
+	{
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		setMatrices();
+		mesh1->render();
+
+	}
+	else if (meshNumber == 2)
+	{
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		setMatrices();
+		mesh2->render();
+		
+	}
+	else if (meshNumber == 3)
+	{
+		model = glm::rotate(model, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		setMatrices();
+		mesh3 ->render();
+	}
 }

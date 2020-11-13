@@ -13,7 +13,10 @@ private:
     GLSLProgram prog;
 
     Plane plane;
-    std::unique_ptr<ObjMesh> mesh;
+    std::unique_ptr<ObjMesh> mesh1; 
+    std::unique_ptr<ObjMesh> mesh2; 
+    std::unique_ptr<ObjMesh> mesh3;
+    int meshNumber;
     Camera camera;
     float tPrev, lightAngle, lightRotationSpeed, roughness;
     std::string objMaterial; 

@@ -93,7 +93,7 @@ void main() {
         sum += microfacetModel(i, Position, n);
     }
 
-    // Gamma 
+    // Gamma
     sum = pow( sum, vec3(1.0/2.2) );
 
     FragColor = vec4(sum, 1);

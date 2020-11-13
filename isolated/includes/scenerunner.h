@@ -162,6 +162,14 @@ private:
             keypress = "silver";
         else if (glfwGetKey(window, GLFW_KEY_6) == GLFW_PRESS)
             keypress = "noMetal";
+        else if (glfwGetKey(window, GLFW_KEY_7) == GLFW_PRESS)
+            keypress = "minus_roughness";
+        else if (glfwGetKey(window, GLFW_KEY_8) == GLFW_PRESS)
+            keypress = "plus_roughness";
+        else if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
+        else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
             keypress = "forward";
         else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -170,6 +178,12 @@ private:
             keypress = "left";
         else if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
             keypress = "right";
+        else if (glfwGetKey(window, GLFW_KEY_I) == GLFW_PRESS)
+            keypress = "meshOne";
+        else if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
+            keypress = "meshTwo";
+        else if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+            keypress = "meshThree";
         else if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
             keypress = "arrow_up";
         else if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
@@ -178,14 +192,6 @@ private:
             keypress = "arrow_left";
         else if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
             keypress = "arrow_right";
-        else if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
-            keypress = "plus_roughness";
-        else if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS)
-            keypress = "minus_roughness";
-        else if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS)
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
-        else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
-            glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
         else if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS)
             animate = false;
         else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
