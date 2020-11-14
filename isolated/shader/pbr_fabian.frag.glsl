@@ -50,14 +50,10 @@ vec3 calculateLightAttenuation( vec3 l , vec3 lightI ) {
 }
 
 vec3 microfacetModel( int lightIndex, vec3 position, vec3 n ) {  
-    vec3 diffuseBrdf = vec3(0.0);  // Metallic
     vec3 l = vec3(0.0); 
     vec3 lightIntensity = Light[lightIndex].L;
-
-    if( !Material.Metal ) {
-        diffuseBrdf = Material.Color;
-    }
-
+    vec3 diffuseBrdf = mix(Material.Color, vec3(0.0), Material.Metal);
+    
     if( Light[lightIndex].Position.w == 0.0 ) // Directional light
     { 
         l = normalize(Light[lightIndex].Position.xyz);
