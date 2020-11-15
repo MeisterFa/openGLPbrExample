@@ -21,6 +21,7 @@ private:
     float tPrev, lightAngle, lightRotationSpeed, roughness;
     std::string objMaterial; 
 	glm::vec4 lightPos, lightPos1, lightPos2;
+    glm::vec3 lightIntensity, lightIntensity1, lightIntensity2;
     glm::vec3 cameraPos, cameraFront, cameraUp;
 
     void setMatrices();

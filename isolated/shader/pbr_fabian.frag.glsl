@@ -49,10 +49,10 @@ vec3 calculateLightAttenuation( vec3 l , vec3 lightI ) {
     return lightI /= (dist * dist);
 }
 
-vec3 microfacetModel( int lightIndex, vec3 position, vec3 n ) {  
+vec3 reflectanceEquation( int lightIndex, vec3 position, vec3 n ) {  
     vec3 l = vec3(0.0); 
     vec3 lightIntensity = Light[lightIndex].L;
-    vec3 diffuseBrdf = mix(Material.Color, vec3(0.0), Material.Metal);
+    vec3 diffuseBrdf = mix(Material.Color, vec3(0.0), Material.Metal); //non Metal gets MaterialColor
     
     if( Light[lightIndex].Position.w == 0.0 ) // Directional light
     { 
@@ -86,10 +86,10 @@ void main() {
     vec3 n = normalize(Normal);
 
     for( int i = 0; i < 3; i++ ) {
-        sum += microfacetModel(i, Position, n);
+        sum += reflectanceEquation(i, Position, n);
     }
 
-    // Gamma
+    // Gamma Correction
     sum = pow( sum, vec3(1.0/2.2) );
 
     FragColor = vec4(sum, 1);

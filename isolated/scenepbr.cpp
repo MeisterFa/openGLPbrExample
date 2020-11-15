@@ -8,6 +8,9 @@ ScenePbr::ScenePbr() : plane(20, 20, 1, 1), tPrev(0.0f), lightPos(5.0f, 3.0f, 5.
 	mesh1 = ObjMesh::load("../media/Chess_Rook.obj");
 	mesh2 = ObjMesh::load("../media/cow.obj");
 	mesh3 = ObjMesh::load("../media/bs_ears.obj");
+	lightIntensity = glm::vec3(40.0f);
+	lightIntensity1 = glm::vec3(6.0f);
+	lightIntensity2 = glm::vec3(50.0f);
 
 	camera = Camera(glm::vec3(0.0f, 1.5f, 10.0f));
 	roughness = 0.01f; 
@@ -24,11 +27,11 @@ void ScenePbr::initScene() {
 	lightAngle = 0.0f;
 	lightRotationSpeed = 1.5f;
 
-	prog.setUniform("Light[0].L", glm::vec3(45.0f));
+	prog.setUniform("Light[0].L", lightIntensity);
 	prog.setUniform("Light[0].Position", view*lightPos);
-	prog.setUniform("Light[1].L", glm::vec3(3.0f));
+	prog.setUniform("Light[1].L", lightIntensity1);
 	prog.setUniform("Light[1].Position", view * lightPos1);
-	prog.setUniform("Light[2].L", glm::vec3(40.0f));
+	prog.setUniform("Light[2].L", lightIntensity2);
 	prog.setUniform("Light[2].Position", view*lightPos2);
 }
 
@@ -64,13 +67,13 @@ void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
 	else if (keypress == "right")
 		camera.ProcessKeyboard(RIGHT, deltaT);
 	else if (keypress == "arrow_up")
-		camera.ProcessKeyboard(ARROW_UP, deltaT);
-	else if (keypress == "arrow_down")
-		camera.ProcessKeyboard(ARROW_DOWN, deltaT);
-	else if (keypress == "arrow_left")
-		camera.ProcessKeyboard(ARROW_LEFT, deltaT);
+		lightIntensity += 10 * deltaT;
+	else if (keypress == "arrow_down" && lightIntensity.x > 5)
+		lightIntensity -= 10 * deltaT;
+	else if (keypress == "arrow_left" && lightIntensity2.x > 5)
+		lightIntensity2 -= 10 * deltaT;
 	else if (keypress == "arrow_right")
-		camera.ProcessKeyboard(ARROW_RIGHT, deltaT);
+		lightIntensity2 += 10 * deltaT;
 	else if (keypress == "meshOne")
 		meshNumber = 1; 
 	else if (keypress == "meshTwo")
@@ -87,7 +90,8 @@ void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
 		if (roughness > 0.02f)
 			roughness -= 0.5 * deltaT;
 	}
-	else if (keypress != "")
+	else if (keypress == "gold" || keypress == "copper" || keypress == "aluminum" || keypress == "titanium" || keypress == "silver" 
+		|| keypress == "noMetal")
 		objMaterial = keypress;
 }
 
@@ -95,9 +99,14 @@ void ScenePbr::render()
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	view = camera.GetViewMatrix();
+
+	prog.setUniform("Light[0].L", lightIntensity);
 	prog.setUniform("Light[0].Position", view * lightPos);
+	prog.setUniform("Light[1].L", lightIntensity1);
 	prog.setUniform("Light[1].Position", view * lightPos1);
+	prog.setUniform("Light[2].L", lightIntensity2);
 	prog.setUniform("Light[2].Position", view * lightPos2);
+
 	drawScene();
 }
 
@@ -164,7 +173,7 @@ void ScenePbr::drawScene() {
 		// Silver
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.93f, 0.88f));
 	}
-	else 
+	else if(objMaterial == "noMetal")
 	{
 		drawSpot(glm::vec3(0, 0, 1.5f), roughness, 0, cowBaseColor);
 	}
