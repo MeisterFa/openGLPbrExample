@@ -75,7 +75,7 @@ void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
 	else if (keypress == "arrow_right")
 		lightIntensity2 += 10 * deltaT;
 	else if (keypress == "meshOne")
-		meshNumber = 1; 
+		meshNumber = 1;
 	else if (keypress == "meshTwo")
 		meshNumber = 2;
 	else if (keypress == "meshThree")
@@ -90,9 +90,11 @@ void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
 		if (roughness > 0.02f)
 			roughness -= 0.5 * deltaT;
 	}
-	else if (keypress == "gold" || keypress == "copper" || keypress == "aluminum" || keypress == "titanium" || keypress == "silver" 
+	else if (keypress == "gold" || keypress == "copper" || keypress == "aluminum" || keypress == "titanium" || keypress == "silver"
 		|| keypress == "noMetal")
 		objMaterial = keypress;
+	else if (keypress == "mouseEnable")
+		camera.firstMouse = true;
 }
 
 void ScenePbr::render()

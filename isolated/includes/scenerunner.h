@@ -169,7 +169,10 @@ private:
         else if (glfwGetKey(window, GLFW_KEY_9) == GLFW_PRESS)
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
         else if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+        {
             glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+            keypress = "mouseEnable";
+        }
         else if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
             keypress = "forward";
         else if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
