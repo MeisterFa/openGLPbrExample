@@ -1,0 +1,78 @@
+\documentclass[
+  11pt,
+  a4paper,
+  oneside
+  ]{article}
+
+\usepackage{blindtext} % Package to generate dummy text throughout this template 
+
+\usepackage[german]{babel} % Language hyphenation and typographical rules
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+
+\usepackage{enumitem} % Customized lists
+\setlist[itemize]{noitemsep} % Make itemize lists more compact
+
+\usepackage{titling} % Customizing the title section
+
+\usepackage{hyperref} % For hyperlinks in the PDF
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+\setlength{\droptitle}{-4\baselineskip} % Move the title up
+
+\pretitle{\begin{center}\Huge\bfseries} % Article title formatting
+\posttitle{\end{center}} % Article title closing formatting
+\title{Physically based Rendering} % Article title
+\author{%
+\textsc{Fabian Meister} \\[1ex] % Your name
+\normalsize Matrikelnummer: 298\,5828 \\ % Your institution
+\normalsize E-Mail: \href{mailto:meisterfa68426@th-nuernberg.de}{meisterfa68426@th-nuernberg.de} \\% Your email address
+\normalsize Technische Hochschule Nürnberg Georg Simon Ohm \\ % Your institution
+%\and % Uncomment if 2 authors are required, duplicate these 4 lines if more
+%\textsc{Jane Smith}\thanks{Corresponding author} \\[1ex] % Second author's name
+%\normalsize University of Utah \\ % Second author's institution
+%\normalsize \href{mailto:jane@smith.com}{jane@smith.com} % Second author's email address
+}
+\date{} % Leave empty to omit a date
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+% Print the title
+\maketitle
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+\section{Einleitung}
+
+Der Begriff Physically Based Rendering/Shading (kurz PBR) beschreibt einen Über\-begriff, welcher verschiedene Rendering Methoden und Techniken umfasst. Diese basieren auf physikalischen Theorien und Prinzipen, welche darauf ausgerichtet sind, die Wechselwirkung zwischen Licht und Materie so korrekt wie möglich zu modellieren. Zu diesen physikalischen Gegebenheiten zählt beispielweise die Energieerhaltung innerhalb eines Systems. (vgl. S.133 David Wolf und DeFries) 
+
+Das PBR ist dennoch keine physikalisch korrekte Simulation des Lichtes, da es Approximations-funktion verwendet, um den Arbeitsaufwand und somit die gesamt Berechnungsdauer zu verringern. Aus diesem Grund wird es Physically Based (zu dt. physikalisch basierendes) Rendering genannt und nicht Physically Rendering. (DeFries)
+\section{Physikalische Grundlagen der Radiometrie}
+\section{Reflectance Equation}
+\subsection{Bidirectional Reflective Distribution Function}
+\subsection{Lambert Diffuse BRDF}
+\subsection{Cook-Torrance specular BRDF}
+\subsubsection{Microfacet Surface Model}
+\subsubsection{Normal distribution function}
+\subsubsection{Geometry function}
+\subsubsection{Fresnel equation}
+
+%----------------------------------------------------------------------------------------
+%	REFERENCE LIST
+%----------------------------------------------------------------------------------------
+
+\bibliography{refs}
+\bibliographystyle{plain}
+
+
+%----------------------------------------------------------------------------------------
+
+\end{document}

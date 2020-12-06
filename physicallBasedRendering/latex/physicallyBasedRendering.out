@@ -1,0 +1,10 @@
+\BOOKMARK [1][-]{section.1}{Einleitung}{}% 1
+\BOOKMARK [1][-]{section.2}{Physikalische Grundlagen der Radiometrie}{}% 2
+\BOOKMARK [1][-]{section.3}{Reflectance Equation}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Bidirectional Reflective Distribution Function}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Lambert Diffuse BRDF}{section.3}% 5
+\BOOKMARK [2][-]{subsection.3.3}{Cook-Torrance specular BRDF}{section.3}% 6
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Microfacet Surface Model}{subsection.3.3}% 7
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Normal distribution function}{subsection.3.3}% 8
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Geometry function}{subsection.3.3}% 9
+\BOOKMARK [3][-]{subsubsection.3.3.4}{Fresnel equation}{subsection.3.3}% 10
