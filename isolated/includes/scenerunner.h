@@ -139,10 +139,9 @@ private:
 
             glfwSwapBuffers(window);
             glfwGetFramebufferSize(window, &width, &height);
-            scene->resize( width, height);
+            scene->resize(width, height);
 
             glfwPollEvents();
-			
 			
 			scene->animate(animate);
         }
