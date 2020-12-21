@@ -7,6 +7,23 @@
 \usepackage{blindtext} % Package to generate dummy text throughout this template 
 \usepackage{graphicx} 
 \usepackage[german]{babel} % Language hyphenation and typographical rules
+\usepackage{listings}
+
+\usepackage{xcolor}
+\lstdefinestyle{customc}{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=C++,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+}
+\lstset{escapechar=@,style=customc}
 
 \usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
 \usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
@@ -75,6 +92,88 @@ Das PBR ist dennoch keine physikalisch korrekte Simulation des Lichtes, da es Ap
 \includegraphics*[width=0.9 \textwidth]{images/abblendung.png}\\
 \includegraphics*[width=0.9 \textwidth]{images/scattering.png}\\
 
+\begin{lstlisting}
+  float geomSmith( float dotProd ) {
+    float k = (Material.Rough + 1.0) * (Material.Rough + 1.0) / 8.0;
+    float denom = dotProd * (1 - k) + k;
+    return 1.0 / denom;
+  }
+\end{lstlisting}
+\begin{lstlisting}
+  vec3 F = schlickFresnel(hDotV);         
+  vec3 kD = mix((vec3(1.0) - F), vec3(0.0), Material.Metal);
+  (kD * diffuseBrdf /  PI  + specBrdf) * lightIntensity * nDotL
+\end{lstlisting}
+\begin{lstlisting}[tabsize=2]
+  if (meshNumber == 1){
+		model = glm::rotate(model, glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		setMatrices();
+		mesh1->render();
+
+	}
+	else if (meshNumber == 2){
+	  ...
+	}
+	else if (meshNumber == 3){
+		...
+	}
+\end{lstlisting}
+\begin{lstlisting}
+  if (glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED)
+\end{lstlisting}
+\begin{lstlisting}[tabsize=2]
+  while( ! glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) ) {
+    keypress = "";
+    [...]
+    processKeypress(window, keypress);
+    scene->update(float(glfwGetTime()), keypress);
+    [...]
+  }
+\end{lstlisting}
+\begin{lstlisting}
+  front.x = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
+  front.y = sin(glm::radians(Pitch));
+  front.z = ((-1) * cos(glm::radians(Yaw))) * cos(glm::radians(Pitch));
+\end{lstlisting}
+\begin{lstlisting}[tabsize=2]
+  void processKeypress(GLFWwindow* window, std::string& keypress)
+  {
+      if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+          keypress = "gold";
+      else if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+          keypress = "copper";
+      [...]
+      else if (glfwGetKey(window, GLFW_KEY_C) == GLFW_PRESS)
+          animate = true;
+  }
+\end{lstlisting}
+\begin{lstlisting}[tabsize=2]
+  void ScenePbr::processKeyboardInput(std::string& keypress, float deltaT)
+  {
+    if (keypress == "forward")
+      camera.ProcessKeyboard(FORWARD, deltaT);
+    else if (keypress == "backward")
+      camera.ProcessKeyboard(BACKWARD, deltaT);
+    [...]
+  }
+\end{lstlisting}
+\begin{lstlisting}
+  glfwGetCursorPos(window, &xpos, &ypos);
+  scene->updateMouseMovement(xpos, ypos);
+\end{lstlisting}
+\begin{lstlisting}[tabsize=2]
+  if (objMaterial == "gold")
+	{
+		// Gold
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(1, 0.71f, 0.29f));
+  }
+  [...]  
+	else if (objMaterial == "copper")
+	{
+		// Copper
+		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.64f, 0.54f));
+	}
+\end{lstlisting}
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
