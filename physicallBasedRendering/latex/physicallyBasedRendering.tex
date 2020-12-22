@@ -8,6 +8,7 @@
 \usepackage{graphicx} 
 \usepackage[german]{babel} % Language hyphenation and typographical rules
 \usepackage{listings}
+\usepackage{mathtools}
 
 \usepackage{xcolor}
 \lstdefinestyle{customc}{
@@ -174,6 +175,23 @@ Das PBR ist dennoch keine physikalisch korrekte Simulation des Lichtes, da es Ap
 		drawSpot(glm::vec3(0.0f, 0.0f, 1.5f), metalRough, 1, glm::vec3(0.95f, 0.64f, 0.54f));
 	}
 \end{lstlisting}
+
+$\Phi =\dfrac{\Delta Q}{\Delta t}$ %Strahlungsfluss
+$\omega =\dfrac{A}{r^{2}}$ %Raumwinkel
+$L=\dfrac{\Delta \Phi \cdot }{\Delta \Omega \cdot \Delta A\cdot \cos \varepsilon }$ %Leuchtdichte
+$E=\dfrac{\Delta E}{\Delta A}$ %Bestrahlungss
+$E=\int _{\Omega }L\cdot \cos \varepsilon \ d\omega $ %Bestrahlungs Integral
+$L_{o}\left( p,\omega _{o}\right) =\int _{\Omega }f_{r}\left( p,w_{i},W_{o}\right)L_{i}\left( p,w_{i}\right)n\cdot w_{i} \ dw_{i}$ %Reflactenace Eq
+$f_{r}\left( p,w_{i},w_{o}\right) =\dfrac{\Delta L_{o}\left( p,\omega _{o}\right) }{\Delta E_{i}\left( p,w_{i}\right) }$ %BRDF Allgemein
+$f_{Lambert}=\dfrac{c}{\pi}$ %Lambert
+$f_{CookTorrance}=\dfrac{D\cdot G\cdot F}{4\cdot \left( w_{0}\cdot n\right) \left( w_{i}\cdot n\right) }$ %Cooktorrance
+$D_{GGXTR}\left( n,h,\alpha \right) =\dfrac{\alpha ^{2}}{\pi \cdot \left( \left( n\cdot h\right) ^{2}\cdot \left( \alpha ^{2}-1\right) +1\right) ^{2}}$ %NDF
+$G_{SchlickGGX}\left( n,v,k\right) =\dfrac{n\cdot v}{\left( n\cdot v\right) \cdot \left( 1-k\right) +k}$ %Geom
+$k_{direct}=\dfrac{\left( \alpha +1\right) ^{2}}{8}$ %GeomK K
+$G_{Smith}\left( n,v,l,k\right) =G_{sub}\left( n,v,k\right) \cdot G_{sub}\left( n,l,k\right)$ %Smith
+$F_{Schlick}\left( h,v,F_{0}\right) =F_{0}+\left( 1-F_{0}\right) \cdot \left( 1-\left( h\cdot v\right) \right) ^{5}$ %Fresnel
+\[ L_{0}\left( p,\omega _{0}\right) =\int _{\Omega }^{}\left( k_{d}\cdot \dfrac{c}{\pi }+k_{s}\dfrac{D\cdot G\cdot F}{4\cdot \left( w_{i}\cdot n\right) \left( \omega _{0}\cdot n\right) }\right) \cdot L_{i}\left( p,w_{i}\right) \cdot n\cdot \omega _{i} \ d\omega _{i}\] %reflactance full
+
 %----------------------------------------------------------------------------------------
 %	REFERENCE LIST
 %----------------------------------------------------------------------------------------
