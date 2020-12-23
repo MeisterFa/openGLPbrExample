@@ -1,3 +1,111 @@
-\begin{thebibliography}{}
+\begin{thebibliography}{10}
+
+\bibitem{renderingEquationArticle}
+Online-tutorium computergrafik.
+\newblock
+  \url{http://www.bungenstock.de/studienarbeit/lambertapplet/lambert.html}.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{vgb}
+Tros laserstrahlung teil - allgemeines.
+\newblock \url{http://regelwerke.vbg.de/vbg_trosla/tros_la0/tros_la0_0_.html}.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{reasonsForPbr1}
+Adopting a physically based shading model.
+\newblock \url{https://seblagarde.wordpress.com/2011/08/17/hello-world/}, 2011.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{realTimeRendering4th}
+Tomas Akenine-Mller, Eric Haines, and Naty Hoffman.
+\newblock {\em Real-Time Rendering, Fourth Edition}.
+\newblock A. K. Peters, Ltd., USA, 4th edition, 2018.
+
+\bibitem{Beyerer2016}
+J{\"u}rgen Beyerer, Fernando Puente~Le{\'o}n, and Christian Frese.
+\newblock {\em Radiometrie}, pages 179--201.
+\newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2016.
+
+\bibitem{learnOpenGL}
+Joey de~Vries.
+\newblock {\em Learn OpenGL: Learn modern OpenGL graphics programming in a
+  step-by-step fashion}.
+\newblock Kendall \& Welling, June 2020.
+
+\bibitem{irrlichtOrg}
+Nikolaus Gebhardt.
+\newblock Einige brdf modelle.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{GRAY197813}
+J.J. Gray.
+\newblock Johann heinrich lambert, mathematician and scientist, 1728 – 1777.
+\newblock {\em Historia Mathematica}, 5(1):13 -- 41, 1978.
+
+\bibitem{googleFilamentPbr}
+Romain Guy and Mathias Agopian.
+\newblock Physically based rendering in filament.
+\newblock
+  \url{https://google.github.io/filament/Filament.html#overview/physicallybasedrendering}.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{reasonsForPbr2}
+Koray Hagen.
+\newblock Physically-based rendering: Theory and practice.
+\newblock
+  \url{https://de.slideshare.net/korayhagen/physically-based-rendering}, April
+  2015.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{rtrPaper}
+Naty Hoffman.
+\newblock Background: Physically-based shading.
+\newblock SIGGRAPH '12, 2010.
+
+\bibitem{theRenderingEquation}
+James~T. Kajiya.
+\newblock The rendering equation.
+\newblock {\em SIGGRAPH Comput. Graph.}, 20(4):143–150, August 1986.
+
+\bibitem{GrundlagenLichtTechnik}
+Siegfried Kokoschka.
+\newblock Grundlagen der lichttechnik.
+\newblock
+  \url{http://www.lti.kit.edu/rd_download/Grundlagen_der_Lichttechnik(1).pdf}.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{pbrGuide}
+Wes McDermott.
+\newblock The pbr guide - part 1.
+\newblock \url{https://academy.substance3d.com/courses/the-pbr-guide-part-1},
+  2018.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{gMueller}
+Gordon Müller.
+\newblock Beschleunigung strahlbasierter rendering-algorithmen.
+\newblock Master's thesis, Rheinische Friedrich-Wilhelms-Universitat Bonn,
+  1997.
+
+\bibitem{radiometrischeGrundbegriffe}
+Jürgen Nolting and Günter Dittmar.
+\newblock How does it work? – teil 13: Radiometrische grundbegriffe.
+\newblock
+  \url{https://www.hs-aalen.de/uploads/publication/file/9371/1005_Nolting.pdf}.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{Ryer97lightmeasurement}
+Alex Ryer, Ultraviolet Light, and Visible Light.
+\newblock Light measurement handbook, 1997.
+
+\bibitem{uniUlm}
+Ulrich Weidenbacher.
+\newblock {\em Beleuchtungsmodelle}.
+
+\bibitem{openGlWolf}
+David Wolff.
+\newblock {\em OpenGL 4 Shading Language Cookbook: Build High-Quality,
+  Real-Time 3D Graphics with OpenGL 4.6, GLSL 4.6 and C++17, 3rd Edition}.
+\newblock Packt Publishing, 2018.
 
 \end{thebibliography}

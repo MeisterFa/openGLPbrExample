@@ -4,47 +4,54 @@ The top-level auxiliary file: physicallyBasedRendering.aux
 Reallocating 'name_of_file' (item size: 1) to 5 items.
 Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: plain.bst
-I found no \citation commands---while reading file physicallyBasedRendering.aux
 Database file #1: refs.bib
-You've used 0 entries,
+Warning--to sort, need author or key in reasonsForPbr1
+Warning--to sort, need author or key in vgb
+Warning--to sort, need author or key in renderingEquationArticle
+Warning--empty journal in irrlichtOrg
+Warning--empty year in irrlichtOrg
+Warning--empty booktitle in rtrPaper
+Warning--empty publisher in uniUlm
+Warning--empty year in uniUlm
+You've used 19 entries,
             2118 wiz_defined-function locations,
-            497 strings with 4025 characters,
-and the built_in function-call counts, 18 in all, are:
-= -- 0
-> -- 0
-< -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 7
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
+            607 strings with 6818 characters,
+and the built_in function-call counts, 4582 in all, are:
+= -- 436
+> -- 160
+< -- 1
++ -- 69
+- -- 48
+* -- 223
+:= -- 753
+add.period$ -- 60
+call.type$ -- 19
+change.case$ -- 77
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
+cite$ -- 27
+duplicate$ -- 186
+empty$ -- 441
+format.name$ -- 48
+if$ -- 991
 int.to.chr$ -- 0
-int.to.str$ -- 0
-missing$ -- 0
-newline$ -- 3
-num.names$ -- 0
-pop$ -- 0
+int.to.str$ -- 19
+missing$ -- 14
+newline$ -- 101
+num.names$ -- 32
+pop$ -- 153
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 62
 quote$ -- 0
-skip$ -- 1
+skip$ -- 127
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
-text.length$ -- 0
+substring$ -- 177
+swap$ -- 26
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
-warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 2
-(There was 1 error message)
+type$ -- 66
+warning$ -- 8
+while$ -- 37
+width$ -- 21
+write$ -- 198
+(There were 8 warnings)

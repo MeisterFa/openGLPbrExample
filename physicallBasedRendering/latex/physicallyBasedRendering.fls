@@ -704,6 +704,8 @@ INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\lat
 INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\latex\physicallyBasedRendering.bbl
 INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\latex\physicallyBasedRendering.bbl
 INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\latex\physicallyBasedRendering.bbl
+INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmtt10.tfm
+INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti10.tfm
 INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\latex\physicallyBasedRendering.aux
 INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\latex\physicallyBasedRendering.out
 INPUT c:\Users\Nutzer\Documents\Dev\openGLPbrExample\physicallBasedRendering\latex\physicallyBasedRendering.out
@@ -727,5 +729,9 @@ INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\
 INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmr8.pfb
 INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
 INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmsy10.pfb
+INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmti10.pfb
+INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
+INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt10.pfb
 INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt9.pfb
 INPUT C:\Users\Nutzer\AppData\Local\Programs\MiKTeX\fonts\type1\public\amsfonts\cm\cmtt9.pfb
