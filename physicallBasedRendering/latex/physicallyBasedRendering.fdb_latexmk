@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex physicallyBasedRendering"] 1608688789 "physicallyBasedRendering.aux" "physicallyBasedRendering.bbl" "physicallyBasedRendering" 1608688797
+["bibtex physicallyBasedRendering"] 1608768132 "physicallyBasedRendering.aux" "physicallyBasedRendering.bbl" "physicallyBasedRendering" 1608768137
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/bibtex/bst/bibtex/plain.bst" 1291864736 20613 bd3fbfa9f64872b81ac57a0dd2ed855f ""
-  "physicallyBasedRendering.aux" 1608688797 4397 985504e722b67524ceda639e96f87579 "pdflatex"
+  "physicallyBasedRendering.aux" 1608768137 8537 fd00bdf5d00c256cfd91e33ae179f9fa "pdflatex"
   "refs.bib" 1608686394 15496 a14108dfd20df4b727c2689acacbd4fa ""
   (generated)
-  "physicallyBasedRendering.bbl"
   "physicallyBasedRendering.blg"
-["pdflatex"] 1608688790 "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.tex" "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.pdf" "physicallyBasedRendering" 1608688797
+  "physicallyBasedRendering.bbl"
+["pdflatex"] 1608768132 "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.tex" "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.pdf" "physicallyBasedRendering" 1608768137
   "C:/Users/Nutzer/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1606138693 10294836 1c6ec502935221e09f65a131e5dba6ef ""
   "C:/Users/Nutzer/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1608658980 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/fonts/tfm/public/amsfonts/cmextra/cmex7.tfm" 1233951848 1004 54797486969f23fa377b128694d548df ""
@@ -84,6 +84,7 @@
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/caption/caption3.sty" 1603740596 67929 d50ae850e1d9604065e8337a75a41029 ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/enumitem/enumitem.sty" 1561036220 51697 f8f08183cd2080d9d18a41432d651dfb ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/epstopdf-pkg/epstopdf-base.sty" 1580041542 14411 d1306dcf79a944f6988e688c1785f9ce ""
+  "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/float/float.sty" 1469020353 6916 16d2656a1984957e674b149555f1ea1d ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.cfg" 1578053545 1104 7ac475a4e3466b0b43e138e9356bda83 ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/geometry/geometry.sty" 1578053545 42759 9cf6c5257b1bc7af01a58859749dd37a ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/graphics-cfg/color.cfg" 1465890692 1213 620bba36b25224fa9b7e1ccb4ecb76fd ""
@@ -114,8 +115,8 @@
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/tools/xspace.sty" 1580644886 4546 3e6071704acf4f66392376b7b66ae02c ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/Nutzer/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1463131981 57049 34128738f682d033422ca125f82e5d62 ""
-  "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.aux" 1608688797 4397 985504e722b67524ceda639e96f87579 ""
-  "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.tex" 1608688779 10419 22739bb74a149773df9d22d5aa310895 ""
+  "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.aux" 1608768137 8537 fd00bdf5d00c256cfd91e33ae179f9fa ""
+  "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.tex" 1608768125 12387 bde1056cbdce25c862f0d2e235398627 ""
   "images/abblendung.png" 1608575773 633979 15f1111c963c74ce2316c55817cafd1d ""
   "images/brdf.PNG" 1608574131 267054 0961a1bc59aa07ca750000953565c096 ""
   "images/fresnelDiagram.png" 1608557663 61492 dc6aeeae2b71eda86ce235eb0b5ca7d5 ""
@@ -126,14 +127,14 @@
   "images/scattering.png" 1608573022 553206 161e8db64dee0b7204817d9d17e09458 ""
   "images/selstbeschattung.png" 1608575754 606437 0d104072f43222c8f4a631cb17dc241c ""
   "images/solid_angle.png" 1608572729 15432 157e5c1285509c07bd8b32e535dd1638 ""
-  "physicallyBasedRendering.aux" 1608688797 4397 985504e722b67524ceda639e96f87579 "pdflatex"
-  "physicallyBasedRendering.bbl" 1608688790 3639 a5274b937021ac7016722f5772bce3d8 "bibtex physicallyBasedRendering"
-  "physicallyBasedRendering.out" 1608688797 737 5d2546374eefdf73eb8b078b254d9864 "pdflatex"
-  "physicallyBasedRendering.tex" 1608688779 10419 22739bb74a149773df9d22d5aa310895 ""
+  "physicallyBasedRendering.aux" 1608768137 8537 fd00bdf5d00c256cfd91e33ae179f9fa "pdflatex"
+  "physicallyBasedRendering.bbl" 1608768132 3930 37ef760c5788b55d83b1fdaf36d1d394 "bibtex physicallyBasedRendering"
+  "physicallyBasedRendering.out" 1608768137 737 5d2546374eefdf73eb8b078b254d9864 "pdflatex"
+  "physicallyBasedRendering.tex" 1608768125 12387 bde1056cbdce25c862f0d2e235398627 ""
   (generated)
-  "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.log"
-  "physicallyBasedRendering.aux"
   "physicallyBasedRendering.pdf"
+  "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.log"
   "c:/Users/Nutzer/Documents/Dev/openGLPbrExample/physicallBasedRendering/latex/physicallyBasedRendering.pdf"
   "physicallyBasedRendering.out"
+  "physicallyBasedRendering.aux"
   "physicallyBasedRendering.log"

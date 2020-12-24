@@ -13,45 +13,45 @@ Warning--empty year in irrlichtOrg
 Warning--empty booktitle in rtrPaper
 Warning--empty publisher in uniUlm
 Warning--empty year in uniUlm
-You've used 19 entries,
+You've used 20 entries,
             2118 wiz_defined-function locations,
-            607 strings with 6818 characters,
-and the built_in function-call counts, 4582 in all, are:
-= -- 436
-> -- 160
+            613 strings with 7042 characters,
+and the built_in function-call counts, 4799 in all, are:
+= -- 458
+> -- 167
 < -- 1
-+ -- 69
-- -- 48
-* -- 223
-:= -- 753
-add.period$ -- 60
-call.type$ -- 19
-change.case$ -- 77
++ -- 72
+- -- 50
+* -- 229
+:= -- 790
+add.period$ -- 64
+call.type$ -- 20
+change.case$ -- 81
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 186
-empty$ -- 441
-format.name$ -- 48
-if$ -- 991
+cite$ -- 28
+duplicate$ -- 193
+empty$ -- 463
+format.name$ -- 50
+if$ -- 1039
 int.to.chr$ -- 0
-int.to.str$ -- 19
+int.to.str$ -- 20
 missing$ -- 14
-newline$ -- 101
-num.names$ -- 32
-pop$ -- 153
+newline$ -- 107
+num.names$ -- 34
+pop$ -- 161
 preamble$ -- 1
-purify$ -- 62
+purify$ -- 65
 quote$ -- 0
-skip$ -- 127
+skip$ -- 133
 stack$ -- 0
-substring$ -- 177
-swap$ -- 26
+substring$ -- 182
+swap$ -- 27
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 66
+type$ -- 70
 warning$ -- 8
-while$ -- 37
-width$ -- 21
-write$ -- 198
+while$ -- 39
+width$ -- 22
+write$ -- 210
 (There were 8 warnings)

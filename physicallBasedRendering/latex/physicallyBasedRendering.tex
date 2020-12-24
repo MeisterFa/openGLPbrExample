@@ -9,6 +9,7 @@
 \usepackage[german]{babel} % Language hyphenation and typographical rules
 \usepackage{listings}
 \usepackage{mathtools}
+\usepackage{float}
 
 \usepackage{xcolor}
 \lstdefinestyle{customc}{
@@ -82,16 +83,66 @@ Das PBR ist dennoch keine physikalisch korrekte Simulation des Lichtes, da es Ap
 \subsubsection{Normal distribution function}
 \subsubsection{Geometry function}
 \subsubsection{Fresnel equation}
-\includegraphics*[width=0.9 \textwidth]{images/brdf.PNG}\\
-\includegraphics*[width=0.9 \textwidth]{images/microfacets_light_rays.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/ndf.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/radiance.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/fresnelDiagram.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/solid_angle.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/normalDistriFun.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/selstbeschattung.png}
-\includegraphics*[width=0.9 \textwidth]{images/abblendung.png}\\
-\includegraphics*[width=0.9 \textwidth]{images/scattering.png}\\
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/brdf.PNG}
+  \caption{Berechnung der Gesamtreflexion aus diffuser und spiegelnder Reflexion vgl. \cite{learnOpenGL}}
+  \label{fig:img1}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/microfacets_light_rays.png}
+  \caption{Rauheit verschiedener Oberflächen im Microfacet-Model vgl. \cite{learnOpenGL}}
+  \label{fig:img2}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/ndf.png}
+  \caption{Visuelle Erscheinung der Verteilungsfunktion der Normalen bei unterschiedlichen Rauheitswerten vgl. \cite{learnOpenGL}}
+  \label{fig:img3}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/radiance.png}
+  \caption{Strahldichte L unter einem Winkel $\theta$ vgl. \cite{learnOpenGL}}
+  \label{fig:img4}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/fresnelDiagram.png}
+  \caption{Fresnel-Reflexion von verschiedenen Substanzen in Abhängigkeit vom Einfallswinkel vgl. \cite{learnOpenGL}}
+  \label{fig:img5}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/solid_angle.png}
+  \caption{Raumwinkel $\omega$ vgl. \cite{learnOpenGL}}
+  \label{fig:img6}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/normalDistriFun.png}
+  \caption{Orientierung der aktiven Mikrofacetten für die m = h gilt vgl. \cite{learnOpenGL}}
+  \label{fig:img7}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.45 \textwidth]{images/selstbeschattung.png}
+  \caption{Selbstbeschattung einer Mikrofacette vgl. \cite{learnOpenGL}}
+  \label{fig:img8}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.45 \textwidth]{images/abblendung.png}
+  \caption{Abblendung einer Mikrofacette vgl. \cite{learnOpenGL}}
+  \label{fig:img9}
+\end{figure}
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.9 \textwidth]{images/scattering.png}
+  \caption{Reflexion und Brechung beim auftreffen eines Lichtstrahles vgl. \cite{learnOpenGL}}
+  \label{fig:img10}
+\end{figure}
 
 \begin{lstlisting}
   float geomSmith( float dotProd ) {
@@ -192,39 +243,45 @@ $G_{Smith}\left( n,v,l,k\right) =G_{sub}\left( n,v,k\right) \cdot G_{sub}\left( 
 $F_{Schlick}\left( h,v,F_{0}\right) =F_{0}+\left( 1-F_{0}\right) \cdot \left( 1-\left( h\cdot v\right) \right) ^{5}$ %Fresnel
 \[ L_{0}\left( p,\omega _{0}\right) =\int _{\Omega }^{}\left( k_{d}\cdot \dfrac{c}{\pi }+k_{s}\dfrac{D\cdot G\cdot F}{4\cdot \left( w_{i}\cdot n\right) \left( \omega _{0}\cdot n\right) }\right) \cdot L_{i}\left( p,w_{i}\right) \cdot n\cdot \omega _{i} \ d\omega _{i}\] %reflactance full
 
+\cite{openGlWolf,learnOpenGL}% Einleitung S.133
+\cite{learnOpenGL}
 \cite{reasonsForPbr1,reasonsForPbr2,pbrGuide,learnOpenGL} % Vorteile PBR
-\cite{Beyerer2016} %einleitung + strahlungsfluss
+\cite{Beyerer2016} %einleitung + strahlungsfluss S.179 f.
+\cite{Beyerer2016} %einleitung + strahlungsfluss S.179 f.
 \cite{learnOpenGL, irrlichtOrg} %Raumwinkel irrlicht S.2
-\cite{GrundlagenLichtTechnik,radiometrischeGrundbegriffe,vgb,learnOpenGL} %strahldichte
+\cite{GrundlagenLichtTechnik,radiometrischeGrundbegriffe,vgb,learnOpenGL} %strahldichte S.8f. S.36f.
 \cite{gMueller} %strahldichte
-\cite{GrundlagenLichtTechnik}%besttrahlungsstärke
-\cite{GrundlagenLichtTechnik}%besttrahlungsstärke
-\cite{GRAY197813,Ryer97lightmeasurement,renderingEquationArticle} %Labertsches Kosinus gesetz
+\cite{GrundlagenLichtTechnik}%besttrahlungsstärke S.10 
+\cite{GrundlagenLichtTechnik}%besttrahlungsstärke S.10
+\cite{GRAY197813,Ryer97lightmeasurement,renderingEquationArticle} %Labertsches Kosinus gesetz S.21f.
 \cite{learnOpenGL} 
 \cite{theRenderingEquation} %The rendering Equation
 \cite{learnOpenGL}%reflactacne eq
 \cite{openGlWolf,learnOpenGL}%reflactance zusammenfasssung
-\cite{irrlichtOrg,uniUlm} %BRDF Standard
-\cite{irrlichtOrg}
-\cite{realTimeRendering4th,learnOpenGL,uniUlm,irrlichtOrg} %gesetze
-\cite{irrlichtOrg,pbrGuide,learnOpenGL,googleFilamentPbr,realTimeRendering4th} %Reflactance
-\cite{irrlichtOrg,pbrGuide,learnOpenGL,googleFilamentPbr,realTimeRendering4th} %Reflactance
-\cite{realTimeRendering4th}
-\cite{realTimeRendering4th,irrlichtOrg,learnOpenGL}%Lambert Diffuse
-\cite{realTimeRendering4th,learnOpenGL}%Lambert Diffuse
-\cite{realTimeRendering4th}%Lambert Diffuse
+\cite{irrlichtOrg,uniUlm} %BRDF Standard S.1 S.2
+\cite{irrlichtOrg} %S.3
+\cite{realTimeRendering4th,learnOpenGL,uniUlm,irrlichtOrg} %gesetze  S.312f. S.2 S.3
+\cite{irrlichtOrg,pbrGuide,learnOpenGL,googleFilamentPbr,realTimeRendering4th,rtrPaper} %Reflactance S.5 S.305f. u. 316f. S.6 u. 11
+\cite{pbrGuide,learnOpenGL,googleFilamentPbr,rtrPaper} %Reflactance S.8
 \cite{learnOpenGL}
-\cite{learnOpenGL,rtrPaper}
-\cite{learnOpenGL,rtrPaper,realTimeRendering4th} %Mikrofacett MOdell
-\cite{learnOpenGL,rtrPaper,realTimeRendering4th} %NDF
-\cite{learnOpenGL}
-\cite{learnOpenGL}
-\cite{rtrPaper}%Geometry
+\cite{realTimeRendering4th,irrlichtOrg,learnOpenGL}%Lambert Diffuse S.313f. S.5f. 
+\cite{realTimeRendering4th,learnOpenGL}%Lambert Diffuse S.314
+\cite{learnOpenGL}%Lambert Diffuse
+\cite{learnOpenGL}%Cooktorrance
+\cite{learnOpenGL}%
+\cite{learnOpenGL,rtrPaper,realTimeRendering4th} %Mikrofacett MOdell S.12 S.331f.
 \cite{rtrPaper}
+\cite{learnOpenGL,rtrPaper,realTimeRendering4th} %NDF S.15f. S.332f. u. 337f.
 \cite{learnOpenGL}
 \cite{learnOpenGL}
-\cite{realTimeRendering4th,rtrPaper}%fresnel
-\cite{realTimeRendering4th,rtrPaper,learnOpenGL}%fresnel
+\cite{Burley2012PhysicallyBasedSA} %Disney alpha 
+\cite{learnOpenGL}
+\cite{rtrPaper,irrlichtOrg}% Geometry S.12f. S.9
+\cite{rtrPaper} % S.16
+\cite{learnOpenGL}
+\cite{learnOpenGL}
+\cite{realTimeRendering4th,rtrPaper}%fresnel S.316ff. s.13f.
+\cite{realTimeRendering4th,rtrPaper,learnOpenGL}%fresnel S.321 S.13
 \cite{learnOpenGL}
 \cite{learnOpenGL}
 

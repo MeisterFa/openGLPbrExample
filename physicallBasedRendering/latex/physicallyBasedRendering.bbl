@@ -26,6 +26,14 @@ J{\"u}rgen Beyerer, Fernando Puente~Le{\'o}n, and Christian Frese.
 \newblock {\em Radiometrie}, pages 179--201.
 \newblock Springer Berlin Heidelberg, Berlin, Heidelberg, 2016.
 
+\bibitem{Burley2012PhysicallyBasedSA}
+Brent Burley.
+\newblock Physically-based shading at disney.
+\newblock
+  \url{https://media.disneyanimation.com/uploads/production/publication_asset/48/asset/s2012_pbs_disney_brdf_notes_v3.pdf},
+  2012.
+\newblock [Online; Accessed: 2020-12-03].
+
 \bibitem{learnOpenGL}
 Joey de~Vries.
 \newblock {\em Learn OpenGL: Learn modern OpenGL graphics programming in a
