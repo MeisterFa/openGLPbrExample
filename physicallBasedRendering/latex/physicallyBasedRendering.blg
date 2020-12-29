@@ -8,50 +8,51 @@ Database file #1: refs.bib
 Warning--to sort, need author or key in reasonsForPbr1
 Warning--to sort, need author or key in vgb
 Warning--to sort, need author or key in renderingEquationArticle
+Warning--to sort, need author or key in defriesKamera
 Warning--empty journal in irrlichtOrg
 Warning--empty year in irrlichtOrg
 Warning--empty booktitle in rtrPaper
 Warning--empty publisher in uniUlm
 Warning--empty year in uniUlm
-You've used 20 entries,
+You've used 21 entries,
             2118 wiz_defined-function locations,
-            613 strings with 7042 characters,
-and the built_in function-call counts, 4799 in all, are:
-= -- 458
-> -- 167
+            617 strings with 7177 characters,
+and the built_in function-call counts, 4967 in all, are:
+= -- 475
+> -- 168
 < -- 1
-+ -- 72
++ -- 73
 - -- 50
-* -- 229
-:= -- 790
-add.period$ -- 64
-call.type$ -- 20
-change.case$ -- 81
+* -- 234
+:= -- 809
+add.period$ -- 67
+call.type$ -- 21
+change.case$ -- 84
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 193
-empty$ -- 463
+cite$ -- 30
+duplicate$ -- 200
+empty$ -- 486
 format.name$ -- 50
-if$ -- 1039
+if$ -- 1081
 int.to.chr$ -- 0
-int.to.str$ -- 20
+int.to.str$ -- 21
 missing$ -- 14
-newline$ -- 107
+newline$ -- 112
 num.names$ -- 34
-pop$ -- 161
+pop$ -- 171
 preamble$ -- 1
-purify$ -- 65
+purify$ -- 67
 quote$ -- 0
-skip$ -- 133
+skip$ -- 138
 stack$ -- 0
-substring$ -- 182
-swap$ -- 27
+substring$ -- 187
+swap$ -- 28
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 70
-warning$ -- 8
+type$ -- 74
+warning$ -- 9
 while$ -- 39
-width$ -- 22
-write$ -- 210
-(There were 8 warnings)
+width$ -- 23
+write$ -- 219
+(There were 9 warnings)

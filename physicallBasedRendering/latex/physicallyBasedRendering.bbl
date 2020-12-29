@@ -1,5 +1,11 @@
 \begin{thebibliography}{10}
 
+\bibitem{defriesKamera}
+Kamera klasse joey defries.
+\newblock
+  \url{https://learnopengl.com/code_viewer_gh.php?code=includes/learnopengl/camera.h}.
+\newblock [Online; Accessed: 2020-12-03].
+
 \bibitem{renderingEquationArticle}
 Online-tutorium computergrafik.
 \newblock
