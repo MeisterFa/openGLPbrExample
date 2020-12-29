@@ -102,35 +102,60 @@ Der \textbf{Raumwinkel} (physikalisches Symbol $\omega$) funktioniert analog zum
 (vgl. \cite{learnOpenGL} u. S.2 \cite{irrlichtOrg}). 
 \begin{figure}[H]
   \centering
-  \includegraphics*[width=0.35 \textwidth]{images/solid_angle.png}
-  \caption{Raumwinkel $\omega$ vgl. \cite{learnOpenGL}}
-  \label{fig:img6}
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics*[width=0.8\linewidth]{images/solid_angle.png}
+    \caption{Raumwinkel $\omega$ vgl. \cite{learnOpenGL}}
+    \label{fig:img6}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{.5\textwidth}
+    \begin{equation}
+      \omega =\dfrac{A}{r^{2}}
+    \end{equation}
+  \end{minipage}
 \end{figure}
-\begin{equation}
-  \omega =\dfrac{A}{r^{2}}
-\end{equation}
 
 Die \textbf{Strahldichte} (Symbol $L$) ist ein Maß für die Lichtabstrahlung einer Fläche. Sie definiert die Leistung einer Lichtquelle pro Raumwinkel $\omega$ und pro Flächeninhalt der emittierende Fläche $A\cdot \cos \varepsilon$. Der zusätzliche Gewichtungsfaktor $\cos \varepsilon$ im Nenner beschreibt dabei das Phänomen, dass eine Fläche unter einem Betrachtungswinkel kleiner wirkt als bei einer senkrechten Betrachtung der Fläche 
 (vgl. S.8f.\cite{GrundlagenLichtTechnik}, S.36f \cite{radiometrischeGrundbegriffe} u. \cite{vgb,learnOpenGL}).
 
 Zudem gehört die Strahldichte zu den sogenannten raumwinkelabhängigen Größen. Diese besitzen keine Abhängigkeiten bezüglich der Entfernung zu der Lichtquelle. Unter der Annahme eines Vakuums verändert sich somit die Werte der Strahldichte bis zum Auftreffen auf der Oberfläche nicht. Wodurch es möglich wäre mit der Formel der Strahldichte die gesamte Verteilung des Lichtflusses zu beschreiben
-(vgl. \cite{gMueller}).  
+(vgl. \cite{gMueller}). 
 \begin{figure}[H]
   \centering
-  \includegraphics*[width=0.35 \textwidth]{images/radiance.png}
-  \caption{Strahldichte $L$ unter einem Winkel $\theta$ vgl. \cite{learnOpenGL}}
-  \label{fig:img4}
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics*[width=0.7 \linewidth]{images/radiance.png}
+    \caption{Strahldichte $L$ unter einem Winkel $\theta$ vgl. \cite{learnOpenGL}}
+    \label{fig:img4}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{.5\textwidth}
+    \begin{equation}
+      L=\dfrac{\Delta \Phi \cdot }{\Delta \Omega \cdot \Delta A\cdot \cos \varepsilon } 
+    \end{equation}
+  \end{minipage}
 \end{figure}
-\begin{equation}
-  L=\dfrac{\Delta \Phi \cdot }{\Delta \Omega \cdot \Delta A\cdot \cos \varepsilon } 
-\end{equation}
-\\
+
 Die Bestrahlungsstärke (Symbol $E$) ist ein Maß für die Stärke der Lichteinstrahlung auf einer Oberfläche. Sie ist definiert als die Relation zwischen der Strahlungsfluss $\Delta \phi$, die auf eine gegebene Fläche mit dem Flächeninhalt $\Delta A$ einfällt 
 (vgl. S.10 \cite{GrundlagenLichtTechnik}):
-\begin{equation}
-  E=\dfrac{\Delta E}{\Delta A}
-\end{equation}
-Die oben gezeigt Formel in ihrer einfachsten Form besitzt eine Vielzahl von Abhängigkeiten (vgl. S.10 \cite{GrundlagenLichtTechnik}):
+\begin{figure}[H]
+  \centering
+  \begin{minipage}{.5\textwidth}
+    \centering
+    \includegraphics*[width=0.8 \linewidth]{images/bestrahlungsstärke.PNG}
+    \caption{Visualisierung der Bestrahlungsstärke}
+    \label{fig:bestrahlungsstaerke}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{.5\textwidth}
+    \begin{equation}
+      E=\dfrac{\Delta \phi}{\Delta A}
+    \end{equation}
+  \end{minipage}
+\end{figure}
+
+Die oben gezeigt Formel in ihrer einfachsten Form besitzt eine Vielzahl von Abhängig\-keiten (vgl. S.10 \cite{GrundlagenLichtTechnik}):
 \begin{itemize}
   \item Position der Fläche
   \item Orientierung der Fläche
@@ -165,7 +190,7 @@ Das Reflexionsverhalten eines Objektes ist im Allgemeinen bestimmt durch den Ein
   f_{r}\left( p,w_{i},w_{o}\right) =\dfrac{\Delta L_{o}\left( p,\omega _{o}\right) }{\Delta E_{i}\left( p,w_{i}\right) }
 \end{equation}
 
-Damit eine BRDF auch ein physikalisches Modell darstellt müssen folgende zusätzliche physikalische Gesetze gelten 
+Damit eine BRDF auch ein physikalisches Modell darstellt müssen folgende zusätz\-liche physikalische Gesetze gelten 
 (vgl. S.312f. \cite{realTimeRendering4th}, S.2 \cite{uniUlm}, S.3 \cite{irrlichtOrg} u. \cite{learnOpenGL}): 
 \begin{enumerate}
   \item Die Helmholz-Reziprozität, welche besagt, dass beim Vertauschen des Einfalls- und Ausfallswinkels des Lichtes der Funktionswert der BRDF sich nicht verändert. In der Praxis verletzen BRDFs, die beim Rendering verwendet werden, häufig die Helmholtz-Reziprozität ohne das erkennbare Artefakte entstehen. Eine Ausnahme bilden hierbei Offline-Rendering-Algorithmen, die speziell Reziprozität erfordern. 
@@ -218,19 +243,23 @@ Im Zähler besitzt die Cook-Torrance BRDF die Verteilungsfunktion der Normalen (
 Jede der eben genannten Funktionen ist dabei nur eine Approximation ihrer physikalischen Äquivalente. Da unterschiedliche Art und Weisen bestehen, um sich der zugrunde liegenden Physik anzunähern, existiert eine Vielzahl an Approximationsfunktionen. Diese unterscheiden sich dabei in Effizienz und Realismus. Im weiteren Verlauf des Papers wird sich an der Trowbridge-Reitz GGX für $D$, die Fresnel-Schlick-Approximation für $F$ und die Smith's Schlick-GGX für $G$ orientiert 
 (vgl. \cite{learnOpenGL}).
 \subsubsection{Mikrofacetten-Modell }
-Wie bereits in einem vorherigen Kapitel angesprochen sind Oberflächen nie perfekt plan, weswegen das Reflexionsverhalten eines Objektes von der Oberflächenrauheit bzw. Beschaffenheit abhängt. Um Oberflächenstrukturen nahezu physikalische korrekt abzubilden, verwendet die Cook-Torrance BRDF wie viele BRDFs ihrer Klasse ein Mikrofacetten-Model/Theorie. Die Grundannahme des Modells ist, dass eine Oberfläche aus vielen Mikrofacetten besteht, die zu klein sind, um einzeln wahrgenommen zu werden. Jede dieser Mikrofacetten ist optisch flach, gleichgroß und ein perfekter Spiegel. In Abhängigkeit von der Rauheit einer Oberfläche kann die Orientierung zwischen den Facetten zueinander sehr unterschiedlich ausfallen 
+Wie bereits in einem vorherigen Kapitel angesprochen sind Oberflächen nie perfekt plan, weswegen das Reflexionsverhalten eines Objektes von der Oberflächenrauheit bzw. Beschaffenheit abhängt. Um Oberflächenstrukturen nahezu physikalische korrekt abzubilden, verwendet die Cook-Torrance BRDF wie viele BRDFs ihrer Klasse ein Mikro\-facetten-Model/Theorie. Die Grundannahme des Modells ist, dass eine Oberfläche aus vielen Mikrofacetten besteht, die zu klein sind, um einzeln wahrgenommen zu werden. Jede dieser Mikrofacetten ist optisch flach, gleichgroß und ein perfekter Spiegel. In Abhängigkeit von der Rauheit einer Oberfläche kann die Orientierung zwischen den Facetten zueinander sehr unterschiedlich ausfallen 
 (vgl. S.12 \cite{rtrPaper}, S.331f. \cite{realTimeRendering4th} u. \cite{learnOpenGL}).
 \begin{figure}[H]
   \centering
-  \includegraphics*[width=0.9 \textwidth]{images/microfacets_light_rays1.png}
-  \caption{Rauheit verschiedener Oberflächen im Microfacet-Model vgl. \cite{learnOpenGL}}
-  \label{fig:img2_1}
-\end{figure}
-\begin{figure}[H]
-  \centering
-  \includegraphics*[width=0.9 \textwidth]{images/microfacets_light_rays2.png}
-  \caption{Rauheit verschiedener Oberflächen im Microfacet-Model vgl. \cite{learnOpenGL}}
-  \label{fig:img2_2}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \includegraphics*[width=1\linewidth]{images/microfacets_light_rays1.png}
+    \caption{Visualisierung einer rauen Oberfläche im Microfacet-Model vgl. \cite{learnOpenGL}}
+    \label{fig:img2_1}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \includegraphics*[width=1\linewidth]{images/microfacets_light_rays2.png}
+    \caption{Visualisierung einer glatten Oberfläche im Microfacet-Model vgl. \cite{learnOpenGL}}
+    \label{fig:img2_2}
+  \end{minipage}
 \end{figure}
 
 Die Bilder \ref{fig:img2_1} und \ref{fig:img2_2} zeigen exemplarisch zwei unterschiedlich raue Oberflächen, welche durch ein Mikrofacetten-Modell dargestellt werden. Bild \ref{fig:img2_1} veranschaulicht eine sehr raue Oberfläche, bei welcher die einzelnen Facetten sehr unregelmäßig angeordnet sind. Dies führt dazu, dass die eintreffenden Lichtstrahlen auf rauen Oberflächen mit größerer Wahrscheinlichkeit in völlig unterschiedliche Richtungen gestreut werden, was zu einer diffuseren Spiegelreflexion führt. Bild \ref{fig:img2_2} zeigt im Gegensatz dazu eine nahezu ebene Oberfläche, welche die Lichtstrahlen in etwa die gleiche Richtung reflektiert. Die Reflexion scheint hierdurch gebündelter und schärfer. Folglich existiert eine Abhängigkeit zwischen der Rauheit und dem Reflexionsverhalten eine Oberfläche 
@@ -257,15 +286,19 @@ Nicht alle Mikroflächen, für die $m = h$ gilt, tragen schlussendlich zur Refle
 (vgl. S.12f. \cite{rtrPaper} u. S.9 \cite{irrlichtOrg}). Die folgenden Abbildungen veranschaulichen die genannten Gegebenheiten: 
 \begin{figure}[H]
   \centering
-  \includegraphics*[width=0.45 \textwidth]{images/selstbeschattung.png}
-  \caption{Selbstbeschattung einer Mikrofacette vgl. \cite{learnOpenGL}}
-  \label{fig:img8}
-\end{figure}
-\begin{figure}[H]
-  \centering
-  \includegraphics*[width=0.45 \textwidth]{images/abblendung.png}
-  \caption{Abblendung einer Mikrofacette vgl. \cite{learnOpenGL}}
-  \label{fig:img9}
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \includegraphics*[width=1\linewidth]{images/selstbeschattung.png}
+    \caption{Selbstbeschattung einer Mikrofacette vgl. \cite{learnOpenGL}}
+    \label{fig:img8}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}{.48\textwidth}
+    \centering
+    \includegraphics*[width=1\linewidth]{images/abblendung.png}
+    \caption{Abblendung einer Mikrofacette vgl. \cite{learnOpenGL}}
+    \label{fig:img9}
+  \end{minipage}
 \end{figure}
 
 Es kommt zu einer Selbstbeschattung, wenn ein Teil des Lichtes bevor es an einer aktive Mikrofacette ankommt von einer anderen Facette abgelenkt wird. Eine Abblendung entsteht dadurch, dass ein Anteil des reflektierten Lichts, bevor es beim Betrachter ankommt, an einer Mikrofacette umgelenkt wird. Folglich läuft es in beiden Fällen darauf hinaus, dass nur ein Bruchteil des Lichtes, welches durch eine aktive Mikrofacette in Richtung des Betrachters reflektiert wurde, auch bei ihm ankommt. 
@@ -307,7 +340,7 @@ Die vollständigen Fresnel-Gleichungen ist sehr komplex und benötigt einige Mat
 
 Was auffällt ist, dass die Fresnel-Schlick Funktion nicht die Oberflächennormale n sondern den Halfway-Verktor h zur Berechnung des Eintrittes Winkels verwendet. Dies hängt damit zusammen, dass bei der Fresnel-Gleichung nur die aktiven Mikrofacetten betrachtet werden. Für die Oberflächennormale m einer Mikrofacette gilt m = h. Somit wird auch bei der Fresnel-Gleichung die Orientierung der Mikrofacetten mit einbezogen. 
 
-Des Weiteren ist es möglich bei der Berechnung der Fresnel-Gleichung noch zusätzliche Annährung zu machen. Für die dielektrischen Oberflächen wird beispielweise ein fester Basisreflexionsgrad gesetzt (F0 = 0,04), welcher dennoch zu physikalisch plausiblen Ergebnissen führt (vgl. \cite{learnOpenGL}).
+Des Weiteren ist es möglich bei der Berechnung der Fresnel-Gleichung noch zusätz\-liche Annährung zu machen. Für die dielektrischen Oberflächen wird beispielweise ein fester Basisreflexionsgrad gesetzt (F0 = 0,04), welcher dennoch zu physikalisch plausiblen Ergebnissen führt (vgl. \cite{learnOpenGL}).
 
 Zuletzt lässt sich mit der Fresnel-Gleichung auch der Anteil des diffusen Lichtes ausrechnen. Hierzu wird eine Aussage über die Energieerhaltung getroffen. Die gesamte Energie des Lichtstrahls, welcher auf eine Oberfläche auftritt, wird zwischen dem gebrochenen und reflektierten Licht aufgeteilt. Durch die Fresnel-Gleichung wird der Reflexionsanteil ausgerechnet. Dieser Anteil kann anschließend von der Gesamtmenge an Energie abgezogen werden, um damit den Anteil des gebrochenen Lichts zu errechnen (vgl. \cite{learnOpenGL}).
 \section{Physically Based Rendering Programm}
@@ -320,9 +353,9 @@ Des Weiteren wurde ein Teil der Logik angepasst. Um den Richtungsvektor der Kame
   front.x = sin(glm::radians(Yaw)) * cos(glm::radians(Pitch));
   front.y = sin(glm::radians(Pitch));
   front.z = ((-1) * cos(glm::radians(Yaw))) * cos(glm::radians(Pitch));
-\end{lstlisting}\hfill \break
+\end{lstlisting}\hfill
 
-Als nächstes wurde die Tastensteuerung der Anwendung implementiert. Diese überprüft per Polling auf vorher Festgelegte Tasten, ob diese derzeit gedrückt sind. Diese Funktion mit dem Namen \textit{processKeypress} wird sukzessiv in While-Schleife der Method \textit{mainLoop} in der Klasse \textit{scenerunner} Aufgerufen.  
+Als nächstes wurde die Tastensteuerung der Anwendung implementiert. Diese über\-prüft per Polling auf vorher Festgelegte Tasten, ob diese derzeit gedrückt sind. Diese Funktion mit dem Namen \textit{processKeypress} wird sukzessiv in While-Schleife der Method \textit{mainLoop} in der Klasse \textit{scenerunner} Aufgerufen.  
 \begin{lstlisting}[tabsize=2]
   while( ! glfwWindowShouldClose(window) && !glfwGetKey(window, GLFW_KEY_ESCAPE) ) {
     keypress = "";
