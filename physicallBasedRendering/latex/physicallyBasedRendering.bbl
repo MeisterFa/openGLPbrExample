@@ -27,6 +27,11 @@ Tomas Akenine-Mller, Eric Haines, and Naty Hoffman.
 \newblock {\em Real-Time Rendering, Fourth Edition}.
 \newblock A. K. Peters, Ltd., USA, 4th edition, 2018.
 
+\bibitem{RTR3}
+Tomas Akenine-M\"{o}ller, Eric Haines, and Naty Hoffman.
+\newblock {\em Real-Time Rendering 3rd Edition}.
+\newblock A. K. Peters, Ltd., Natick, MA, USA, 2008.
+
 \bibitem{Beyerer2016}
 J{\"u}rgen Beyerer, Fernando Puente~Le{\'o}n, and Christian Frese.
 \newblock {\em Radiometrie}, pages 179--201.
@@ -86,6 +91,13 @@ Siegfried Kokoschka.
 \newblock Grundlagen der lichttechnik.
 \newblock
   \url{http://www.lti.kit.edu/rd_download/Grundlagen_der_Lichttechnik(1).pdf}.
+\newblock [Online; Accessed: 2020-12-03].
+
+\bibitem{astrobites}
+Anthony Maue.
+\newblock Spectacular specular reflections on titan.
+\newblock \url{https://astrobites.org/2020/10/22/specular-reflections-titan/},
+  2020.
 \newblock [Online; Accessed: 2020-12-03].
 
 \bibitem{pbrGuide}
