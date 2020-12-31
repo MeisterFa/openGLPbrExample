@@ -116,7 +116,7 @@ Die \textbf{Strahldichte} ($L$) in Abbildung \ref{fig:img4} dargestellt ist ein 
 Zudem gehört die Strahldichte zu den sogenannten raumwinkelabhängigen Größen. Diese besitzen keine Abhängigkeiten bezüglich der Entfernung zu der Lichtquelle. Unter der Annahme eines Vakuums verändern sich somit die Werte der Strahldichte bis zum Auftreffen auf der Oberfläche nicht. Wodurch es möglich wäre mit der Formel der Strahldichte die gesamte Verteilung des Lichtflusses zu beschreiben
 (vgl. \cite{gMueller}). 
 
-Die \textbf{Bestrahlungsstärke} ($E$) ist ein Maß für die Stärke der Lichteinstrahlung auf einer Oberfläche. Sie ist definiert als $E=\tfrac{\Delta \phi}{\Delta A}$. Hierbei ist $E$ die Relation zwischen der Strahlungsfluss $\Delta \phi$, die auf eine gegebene Fläche mit dem Flächeninhalt $\Delta A$ einfällt 
+Die \textbf{Bestrahlungsstärke} ($E$) ist ein Maß für die Stärke der Lichteinstrahlung auf einer Oberfläche. Sie ist definiert als $E=\tfrac{\Delta \phi}{\Delta A}$. Hierbei ist $E$ die Relation zwischen dem Strahlungsfluss $\Delta \phi$, welcher auf eine gegebene Fläche mit dem Flächeninhalt $\Delta A$ einfällt 
 (vgl. S.10 \cite{GrundlagenLichtTechnik}). Die Bestrahlungsstärke lässt sich Folgendermaßen darstellen \ref{fig:bestrahlungsstaerke}:
 \begin{figure}[H]
     \centering
@@ -139,7 +139,7 @@ Um diese Abhängigkeiten mit einzubeziehen, verwendet man für Physically Based 
 Sie beschreibt die Bestrahlungsstärke über die Strahlungsdichte multipliziert mit einem Kosinus Faktor $\cos \varepsilon$, welcher sich aus dem Winkel zwischen der Flächennormalen (n) und der Richtung des einfallenden Lichtstrahls ($\omega_{i}$) ergibt. Dieser Faktor repräsentiert das Lambertsches Kosinusgesetz, welches die jeweilige Geometrie der Situation (die Positionierung von Lichtquelle zur Oberfläche) mit einbezieht. Je direkter das Licht auf die Oberfläche auftrifft, umso größer ist schlussendlich die Intensität des Lichtstrahls, welche wahrgenommen werden kann 
 (vgl. S.21f \cite{GRAY197813} u. \cite{Ryer97lightmeasurement,renderingEquationArticle}).
 
-Um die Gesamtmenge des auf die Fläche fallenden Lichts zu errechnen, wird die Summe der Strahldichten aller Lichtquelle gemessen. Physikalisch korrekt wird hierzu die Summe als Integral über die Hemisphäre $\Omega$ gebildet. 
+Um die Gesamtmenge des auf die Fläche einfallenden Lichts zu errechnen, wird die Summe der Strahldichten aller Lichtquelle gemessen. Physikalisch korrekt wird hierzu die Summe als Integral über die Hemisphäre $\Omega$ gebildet. 
 \section{Reflectance Equation}\label{sec:reflac}
 Wie bereits in der Einleitung erwähnt, wird beim Physically Based Rendering die Interaktion zwischen dem Licht und den Materialen eines Objektes modelliert. Um dies zu berechnen, verwendet das PBR eines der derzeit besten Modelle zur Simulation der visuellen Erscheinungen des Lichtes, die sogenannte Reflectance Equation (zu dt. Reflexions-Gleichung) 
 (vgl. \cite{learnOpenGL}). 
@@ -147,16 +147,16 @@ Wie bereits in der Einleitung erwähnt, wird beim Physically Based Rendering die
   L_{o}\left( p,\omega _{o}\right) =\int _{\Omega }f_{r}\left( p,\omega_{i},\omega_{o}\right)L_{i}\left( p,\omega_{i}\right)n\cdot \omega_{i} \ d\omega_{i}
 \end{equation}
 
-Diese Formel ist eine Vereinfachung bzw. eine Spezialisierung der Render Equation (zu dt. Render Gleichung), welche 1986 von David Immel et al. und James Kajiyain, in ihrem Artikel „\textit{The Rendering Equation}“ (vgl. \cite{theRenderingEquation}) vorgestellt wurde. Mit ihr lässt sich die Strahldichte ($L_{o}$) berechnen, welche im Kapitel (\ref{sec:radiometrie}) bereits detailliert beschrieben wurde. Die Strahldichte im speziellen Fall der Reflectance Equation liefert eine Aussage über die Gesamtmenge an Licht, welche von einem Punkt ($p$) ausgehend entlang einer bestimmten Blickrichtung ($\omega_{o}$) reflektiert wird. Dabei ist die Intensität der reflektierenden Strahlung abhängig von der Menge an Licht, welche in dem jeweiligen Punkt auftrifft $L_{i}\left( p,\omega_{i}\right)n\cdot \omega_{i}$ und der Wechselwirkung des Lichts mit der Oberfläche $f_{r}\left( p,\omega_{i},\omega_{o}\right)$ (vgl. \cite{learnOpenGL}). 
+Diese Formel ist eine Vereinfachung bzw. eine Spezialisierung der Render Equation (zu dt. Render Gleichung), welche 1986 von James Kajiyain, in seinem Artikel „\textit{The Rendering Equation}“ (vgl. \cite{theRenderingEquation}) vorgestellt wurde. Mit ihr lässt sich die Strahldichte ($L_{o}$) berechnen, welche im Kapitel (\ref{sec:radiometrie}) bereits detailliert beschrieben wurde. Die Strahldichte im speziellen Fall der Reflectance Equation liefert eine Aussage über die Gesamtmenge an Licht, welche von einem Punkt ($p$) ausgehend entlang einer bestimmten Blickrichtung ($\omega_{o}$) reflektiert wird. Dabei ist die Intensität der reflektierenden Strahlung abhängig von der Menge an Licht, welche in dem jeweiligen Punkt auftrifft $L_{i}\left( p,\omega_{i}\right)n\cdot \omega_{i}$ und der Wechselwirkung des Lichts mit der Oberfläche $f_{r}\left( p,\omega_{i},\omega_{o}\right)$ (vgl. \cite{learnOpenGL}). 
 
 Ersteres wird durch die sogenannte Bestrahlungsstärke aus dem Kapitel (\ref{sec:radiometrie}) erfasst. Letzteres wird durch die Bidirectional Reflective Distribution Function (kurz BRDF) ausgedrückt. Auf die BRDF und deren einzelnen Funktionen, wird in einem späteren Kapitel im Detail eingegangen. Das Ergebnis aus BRDF und Bestrahlungsstärke wird anschließend mit einem Kosinus Faktor gewichtet, welcher das Lambertsche Kosinusgesetz aus Kapitel (\ref{sec:radiometrie}) repräsentiert 
 (vgl. S.133f. \cite{openGlWolf} u. \cite{learnOpenGL}).
 
 \subsection{Bidirectional Reflective Distribution Function}
 Das Reflexionsverhalten eines Objektes ist im Allgemeinen bestimmt durch den Ein- und Ausfallswinkel des Lichtes und das Material aus, welchem es besteht. So lässt sich beispielsweise in der Natur unter gleichbleibenden Beleuchtungsverhältnissen bei verschiedenartigen Materialien ein unterschiedlich starker Glanz beobachten. Dieses Verhalten wird durch die BRDF ausgedrückt, welche 1977 amtlich vom National Bureau of Standards (USA) definiert wurde, um Reflexionsdarstellungen und -berechnungen zu vereinheitlichen 
-(vgl. S.1 \cite{irrlichtOrg} u. S.2 \cite{uniUlm}). In ihrer Grundform beschreibt die BRDF den Zusammenhang zwischen der differentiellen Strahldichte in der Betrachtungsrichtung und der differentiellen Bestrahlungsstärke, welche aus der Beleuchtungsrichtung auf die Oberfläche einwirkt 
+(vgl. S.1 \cite{irrlichtOrg} u. S.2 \cite{uniUlm}). In ihrer Grundform (siehe \ref{eq:simpBRDF}) beschreibt die BRDF den Zusammenhang zwischen der differentiellen Strahldichte in der Betrachtungsrichtung und der differentiellen Bestrahlungsstärke, welche aus der Beleuchtungsrichtung auf die Oberfläche einwirkt 
 (vgl. S.3 \cite{irrlichtOrg}). Vereinfacht ausgerückt beschreibt die BRDF den Anteil eines Lichtstrahles, welcher beim Betrachter ankommt.
-\begin{equation}
+\begin{equation}\label{eq:simpBRDF}
   f_{r}\left( p,w_{i},w_{o}\right) =\dfrac{\Delta L_{o}\left( p,\omega _{o}\right) }{\Delta E_{i}\left( p,w_{i}\right) }
 \end{equation}
 
@@ -187,7 +187,7 @@ Möchte man im Folgenden die gesamte Reflexion einer Oberfläche berechnen, so e
 \begin{figure}[H]
   \centering
   \includegraphics*[width=1 \textwidth]{images/brdf.PNG}
-  \caption{Berechnung der Gesamtreflexion aus diffuser und spiegelnder Reflexion \footnotesize\textbf{Quelle:} \url{astrobites.org} \cite{astrobites}}
+  \caption{Berechnung der Gesamtreflexion aus diffuser und spiegelnder Reflexion \footnotesize\textbf{Quelle:} \url{astrobites.org} \cite{astrobites} und Real-Time Rendering: 4th edition S.307 \cite{realTimeRendering4th}}
   \label{fig:img1}
 \end{figure}
 
