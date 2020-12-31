@@ -92,9 +92,9 @@ In der folgenden Arbeit wird ein Überblick über die physikalischen Grundlagen,
 Die Radiometrie ist ein Teilgebiet der Strahlungsphysik, welche sich mit der Messung von elektromagnetischer Strahlung unabhängig von dem menschlichen Auge befasst 
 (vgl. S.179f. \cite{Beyerer2016}). Da im weiteren Verlauf des Papers Fachbegriffe bzw. physikalische Größen der Radiometrie referenziert werden, werden diese im Folgenden näher erläutert. 
 
-Der \textbf{Strahlungsfluss} ($\phi$) repräsentiert die Leistung einer Lichtquelle. Er ist definiert als $\Phi =\tfrac{\Delta Q}{\Delta t}$. Hierbei ist $\phi$ die differentiale Strahlungsenergie $\Delta Q$, welche von der Quelle abgestrahlt wird pro gemessene Zeiteinheit $\Delta t$ (vgl. S.179f. \cite{Beyerer2016}). 
+Der \textbf{Strahlungsfluss} ($\phi$) repräsentiert die Leistung einer Lichtquelle. Er ist definiert als $\phi =\tfrac{\Delta Q}{\Delta t}$. Hierbei ist $\phi$ die differentiale Strahlungsenergie $\Delta Q$, welche von der Quelle abgestrahlt wird pro gemessene Zeiteinheit $\Delta t$ (vgl. S.179f. \cite{Beyerer2016}). 
 
-Der \textbf{Raumwinkel} ($\omega$) funktioniert analog zum Bogenmaß im 3-dimensionalen Raum. Er ist definiert als das Verhältnis der Kugelfläche $A$ zum quadratischen Radius der Kugel $r^{2}$, d.h. $\omega =\tfrac{A}{r^{2}}$. Die Fläche, welche im Bild
+Der \textbf{Raumwinkel} ($\omega$) funktioniert analog zum Bogenmaß im 3-dimensionalen Raum. Er ist definiert als das Verhältnis der Kugelfläche $A$ zum quadratischen Radius $r$ der Kugel, d.h. $\omega =\tfrac{A}{r^{2}}$. Die Fläche, welche im Bild
 (\ref{fig:img6}) zu sehen ist, wird gebildet, in dem man die Form auf die Hemisphäre (Einheitskugel) projiziert. Durch den Raumwinkel wird dabei nicht nur die einnehmende Fläche auf der Hemisphäre, sondern auch die Richtung des Objektes bestimmt 
 (vgl. \cite{learnOpenGL} u. S.2 \cite{irrlichtOrg}). 
 \begin{figure}[H]
@@ -105,20 +105,19 @@ Der \textbf{Raumwinkel} ($\omega$) funktioniert analog zum Bogenmaß im 3-dimens
 \end{figure}
 
 
-Die \textbf{Strahldichte} ($L$) ist ein Maß für die Lichtabstrahlung einer Fläche, gegeben der Formel: $ L=\tfrac{\Delta \Phi \cdot }{\Delta \omega \cdot \Delta A\cdot \cos \varepsilon } $. $L$ entspricht der Leistung einer Lichtquelle pro Raumwinkel $\omega$ und pro Flächeninhalt der emittierende Fläche $A\cdot \cos \varepsilon$. Der zusätzliche Gewichtungsfaktor $\cos \varepsilon$ im Nenner beschreibt dabei das Phänomen, dass eine Fläche unter einem Betrachtungswinkel kleiner wirkt als bei einer senkrechten Betrachtung der Fläche 
+Die \textbf{Strahldichte} ($L$) in Abbildung \ref{fig:img4} dargestellt ist ein Maß für die Lichtabstrahlung einer Fläche. Sie wird mathematisch durch die Formel $ L=\tfrac{\Delta \Phi \cdot }{\Delta \omega \cdot \Delta A\cdot \cos \varepsilon } $ ausgedrückt. $L$ entspricht der Leistung einer Lichtquelle pro Raumwinkel $\omega$ und pro Flächeninhalt der emittierende Fläche $A\cdot \cos \varepsilon$. Der zusätzliche Gewichtungsfaktor $\cos \varepsilon$ im Nenner beschreibt dabei das Phänomen, dass eine Fläche unter einem Betrachtungswinkel kleiner wirkt als bei einer senkrechten Betrachtung der Fläche 
 (vgl. S.8f.\cite{GrundlagenLichtTechnik}, S.36f \cite{radiometrischeGrundbegriffe} u. \cite{vgb,learnOpenGL}).
-
+\begin{figure}[H]
+  \centering
+  \includegraphics*[width=0.34 \linewidth]{images/radiance.png}
+  \caption{Strahldichte $L$ unter einem Winkel $\theta$ \footnotesize\textbf{Quelle:} DeFries\cite{learnOpenGL}}
+  \label{fig:img4}
+\end{figure}
 Zudem gehört die Strahldichte zu den sogenannten raumwinkelabhängigen Größen. Diese besitzen keine Abhängigkeiten bezüglich der Entfernung zu der Lichtquelle. Unter der Annahme eines Vakuums verändern sich somit die Werte der Strahldichte bis zum Auftreffen auf der Oberfläche nicht. Wodurch es möglich wäre mit der Formel der Strahldichte die gesamte Verteilung des Lichtflusses zu beschreiben
 (vgl. \cite{gMueller}). 
-\begin{figure}[H]
-    \centering
-    \includegraphics*[width=0.34 \linewidth]{images/radiance.png}
-    \caption{Strahldichte $L$ unter einem Winkel $\theta$ \footnotesize\textbf{Quelle:} DeFries\cite{learnOpenGL}}
-    \label{fig:img4}
-\end{figure}
 
 Die \textbf{Bestrahlungsstärke} ($E$) ist ein Maß für die Stärke der Lichteinstrahlung auf einer Oberfläche. Sie ist definiert als $E=\tfrac{\Delta \phi}{\Delta A}$. Hierbei ist $E$ die Relation zwischen der Strahlungsfluss $\Delta \phi$, die auf eine gegebene Fläche mit dem Flächeninhalt $\Delta A$ einfällt 
-(vgl. S.10 \cite{GrundlagenLichtTechnik}):
+(vgl. S.10 \cite{GrundlagenLichtTechnik}). Die Bestrahlungsstärke lässt sich Folgendermaßen darstellen \ref{fig:bestrahlungsstaerke}:
 \begin{figure}[H]
     \centering
     \includegraphics*[width=0.4 \linewidth]{images/bestrahlungsstärke.PNG}
@@ -172,7 +171,7 @@ Damit eine BRDF auch ein physikalisches Modell darstellen kann, müssen folgende
 \subsection{Metalle und Nicht-Metalle}
 Um die Theorien bzw. Funktionsweisen der BRDFs in den folgenden Kapiteln besser verstehen zu können, muss zunächst das unterschiedliche Verhalten von metallischen (Leiter) und nichtmetallischen (Dielektrikum) Oberflächen bei Lichteinwirkung verdeutlicht werden.
 
-Trifft ein Lichtstrahl auf eine Oberfläche, dann wird das Licht in einen Brechungsanteil und einen Reflexionsanteil aufgeteilt. Der Reflexionsteil ist das Licht, welches direkt von der Oberfläche reflektiert wird und dabei nicht in das Material eindringt. Diese Art der Reflexion wird auch spiegelnde Reflexion (dt. für specular reflection) genannt. Sie folgt dem physikalischen Reflexionsgesetz, welches besagt das auf einer vollkommen ebenen Oberfläche der Reflexionswinkel gleich dem Einfallswinkel ist. Jedoch sind die meisten Oberflächen nicht perfekt plan, weswegen die Richtung der Reflexion von der Oberflächenrauheit abhängt. Auf raueren Oberflächen erscheinen die Reflexionen der Lichter insgesamt zerstreuter und gleichzeitig dunkler. Bei glatteren Oberflächen bleiben die Spiegelreflexionen fokussiert, und erscheinen dabei intensiver. Der Brechungsanteil ist der verbleibende Anteil des Lichtes, welcher in das Material gebrochen wird. Im inneren trifft das Licht auf mikroskopisch kleine Unterschiede in der Materialdichte. Hierbei wird es an den Grenzen zwischen den verschiedenen Dichten abermals gestreut, gebrochen bzw. reflektiert und zum Teil wieder als diffuse Reflexion zufällig in den Raum zurück reflektiert. Im Laufe dieses Prozesses absorbiert das Material teilweise die Energie des Lichtes. Bewegt es sich zu lange in einem solchen Material, kann es vollständig absorbiert werden. Infolgedessen hat das Licht, welches dieses Material tatsächlich verlässt, wahrscheinlich nur eine sehr geringe Entfernung vom Eintrittspunkt zurückgelegt. Daher kann der Abstand zwischen dem Eintritts- und Austrittspunkt als vernachlässigbar gering angesehen werden 
+Trifft ein Lichtstrahl auf eine Oberfläche, dann wird das Licht in einen Brechungsanteil und einen Reflexionsanteil aufgeteilt (siehe Abbildung \ref{fig:img10}). Der Reflexionsteil ist das Licht, welches direkt von der Oberfläche reflektiert wird und dabei nicht in das Material eindringt. Diese Art der Reflexion wird auch spiegelnde Reflexion (dt. für specular reflection) genannt. Sie folgt dem physikalischen Reflexionsgesetz, welches besagt das auf einer vollkommen ebenen Oberfläche der Reflexionswinkel gleich dem Einfallswinkel ist. Jedoch sind die meisten Oberflächen nicht perfekt plan, weswegen die Richtung der Reflexion von der Oberflächenrauheit abhängt. Auf raueren Oberflächen erscheinen die Reflexionen der Lichter insgesamt zerstreuter und gleichzeitig dunkler. Bei glatteren Oberflächen bleiben die Spiegelreflexionen fokussiert, und erscheinen dabei intensiver. Der Brechungsanteil ist der verbleibende Anteil des Lichtes, welcher in das Material gebrochen wird. Im inneren trifft das Licht auf mikroskopisch kleine Unterschiede in der Materialdichte. Hierbei wird es an den Grenzen zwischen den verschiedenen Dichten abermals gestreut, gebrochen bzw. reflektiert und zum Teil wieder als diffuse Reflexion zufällig in den Raum zurück reflektiert. Im Laufe dieses Prozesses absorbiert das Material teilweise die Energie des Lichtes. Bewegt es sich zu lange in einem solchen Material, kann es vollständig absorbiert werden. Infolgedessen hat das Licht, welches dieses Material tatsächlich verlässt, wahrscheinlich nur eine sehr geringe Entfernung vom Eintrittspunkt zurückgelegt. Daher kann der Abstand zwischen dem Eintritts- und Austrittspunkt als vernachlässigbar gering angesehen werden 
 (vgl. S.5 \cite{irrlichtOrg}, S.305f./316f. \cite{realTimeRendering4th}, S.6/11 \cite{rtrPaper} u. \cite{learnOpenGL,pbrGuide,googleFilamentPbr}).
 \begin{figure}[H]
   \centering
@@ -237,7 +236,7 @@ Die Bilder \ref{fig:img2_1} und \ref{fig:img2_2} zeigen exemplarisch zwei unters
 (vgl. \cite{learnOpenGL}). 
 
 \subsubsection{Verteilungsfunktion der Normalen}\label{sec:ndf}
-Wie bereits im vorherigen Kapitel erwähnt wird in der Mikrofacetten-Theorie angenommen, dass eine Facette immer ein perfekter Spiegel ist und somit auch dessen Reflexionseigenschaften besitzt. Für einen ebenen Spiegel entspricht bei der Reflexion der Ausfallswinkel des Lichtstrahles gleich dem Einfallswinkel. In der Cook-Torrance BRDF muss diese Eigenschaft berücksichtigt werden. Nur die Mikrofacetten, welche zufälligerweise genau im richtigen Winkel zum eintreffenden Licht orientiert sind, leisten schlussendlich einen Beitrag zum gesamten BRDF-Wert. Die Ausrichtung einer Facette wird dabei durch ihre Flächennormale ($m$) bestimmt. Eine Fläche reflektiert dann das Licht zum Betrachter, wenn dessen Normale in der Mitte zwischen dem Vektor des einfallenden Lichtes ($l$) und dem Vektor in Richtung des Betrachters ($v$) ist. Folglich ist die Flächennormale der Reflektierenden Flächen gleich der Winkelhalbierenden ($h$) (dt. für Halfway vector) zwischen $l$ und $v$. Solche Facetten werden aktive Mikrofacetten genannt
+Wie bereits im vorherigen Kapitel erwähnt wird in der Mikrofacetten-Theorie angenommen, dass eine Facette immer ein perfekter Spiegel ist und somit auch dessen Reflexionseigenschaften besitzt. Für einen ebenen Spiegel entspricht bei der Reflexion der Ausfallswinkel des Lichtstrahles gleich dem Einfallswinkel. In der Cook-Torrance BRDF muss diese Eigenschaft berücksichtigt werden. Nur die Mikrofacetten, welche zufälligerweise genau im richtigen Winkel zum eintreffenden Licht orientiert sind, leisten schlussendlich einen Beitrag zum gesamten BRDF-Wert. Die Ausrichtung einer Facette wird dabei durch ihre Flächennormale ($m$) bestimmt. Wie in Abbildung \ref{fig:img7} zu sehen, reflektiert eine Fläche dann das Licht zum Betrachter, wenn dessen Normale in der Mitte zwischen dem Vektor des einfallenden Lichtes ($l$) und dem Vektor in Richtung des Betrachters ($v$) ist. Folglich ist die Flächennormale der Reflektierenden Flächen gleich der Winkelhalbierenden ($h$) (dt. für Halfway vector) zwischen $l$ und $v$. Solche Facetten werden aktive Mikrofacetten genannt
 (vgl. S.15f. \cite{rtrPaper}, S.332f./337f. \cite{realTimeRendering4th} u. \cite{learnOpenGL}).
 \begin{figure}[H]
   \centering
@@ -254,7 +253,7 @@ Die Verteilungsfunktion der Normalen $D$ (dt. für normal distribution function 
 Die Funktion besitzt neben der Oberflächennormalen ($n$) und dem Halfway Vektor ($v$) noch einen weiteren Parameter $\alpha$. Dieser bestimmt die Oberflächenrauheit eines Materials und kann grundsätzlich frei gewählt werden. Dennoch empfiehlt es sich hier an bereits etablierte Formeln zur Berechnung von $\alpha$ zu orientieren. Die weiter oben dargestellte Formel zur Berechnung von $\alpha$ wird in einem Paper von Walt Disney Animation Studios und Brent Burley (\cite{Burley2012PhysicallyBasedSA}) vorgestellt.
 \subsubsection{Geometrie-Funktion}
 Nicht alle Mikroflächen, für die $m = h$ gilt, tragen schlussendlich zur Reflexion bei. Es existieren weitere Gegebenheit, welche durch das Mikrofacetten-Modell entstanden sind und in der Cook-Torrance-BRDF berücksichtigt werden müssen. Zu diesen gehören die Selbstbeschattung (dt. für self shadowing) und die Abblendung (dt. für masking), welche durch die V-Förmigen Hohlräume (V-cavities) zustande kommen 
-(vgl. S.12f. \cite{rtrPaper} u. S.9 \cite{irrlichtOrg}). Die folgenden Abbildungen veranschaulichen die genannten Gegebenheiten: 
+(vgl. S.12f. \cite{rtrPaper} u. S.9 \cite{irrlichtOrg}). Die folgenden Abbildungen \ref{fig:img8} und \ref{fig:img9} veranschaulichen die genannten Gegebenheiten: 
 \begin{figure}[H]
   \centering
   \begin{minipage}{.48\textwidth}
@@ -300,7 +299,7 @@ Wie bereits aus einem vorherigen Kapitel bekannt ist, wird Licht, wenn es auf ei
   \label{fig:img5}
 \end{figure}
 
-In dem Diagramm fällt auf, dass der Reflexionsgrad bei einem Einfallswinkel von $0^\circ$ bis etwa $45^\circ$ nahezu konstant und am Niedrigsten ist. Zwischen $45^\circ$ und ca. $75^\circ$ verändert sich der Reflexionsgrad deutlicher. Im weiteren Verlauf des Reflexionsgrads zwischen $75^\circ$ und $90^\circ$ strebt dieser fast exponentiell immer gegen 1. Des Weiteren zeigt die Grafik das Metalle, wie beispielweise Kupfer, unterschiedliche Werte für die drei Farbkanäle Rot, Grün und Blau besitzen. Aufgrund dessen haben Metalle einen farblichen Glanz, welcher für Kuper z.B. eher rötlich ist und je nach Auftrittswinkel des Lichtes stärker oder weniger stark durchkommt. 
+In dem Diagramm \ref{fig:img5} fällt auf, dass der Reflexionsgrad bei einem Einfallswinkel von $0^\circ$ bis etwa $45^\circ$ nahezu konstant und am Niedrigsten ist. Zwischen $45^\circ$ und ca. $75^\circ$ verändert sich der Reflexionsgrad deutlicher. Im weiteren Verlauf des Reflexionsgrads zwischen $75^\circ$ und $90^\circ$ strebt dieser fast exponentiell immer gegen 1. Des Weiteren zeigt die Grafik das Metalle, wie beispielweise Kupfer, unterschiedliche Werte für die drei Farbkanäle Rot, Grün und Blau besitzen. Aufgrund dessen haben Metalle einen farblichen Glanz, welcher für Kuper z.B. eher rötlich ist und je nach Auftrittswinkel des Lichtes stärker oder weniger stark durchkommt. 
 
 Zu erkennen ist außerdem, dass Metalle grundsätzlich einen deutlich höheren Reflexionsgrad als Dielektrika besitzen. Tatsächlich haben die Dielektrika bei $0^\circ$ Einfallswinkel ($F(0)$) einen Reflexionsanteil von 1\% bis maximal 17\%, während Metalle einen Anteil größer gleich 50\% besitzen. Da der Fresnel-Reflexionsgrad im Bereich von $0^\circ$ bis $45^\circ$ nahezu identisch ist, wird bei $0^\circ$ der Wert der Fresnel-Gleichung als das Basis-Reflexionsvermögen des Materials bezeichnet. Dieser stellt eine wichtige Konstant bei der Berechnung der Fresnel-Gleichung dar und wird im Folgenden als $F_{0}$ bezeichnet. $F_{0}$ lässt sich dabei mit Hilfe des sogenannten Brechungsindexes (dt. für indices of refraction) berechnen 
 (vgl. S.321 \cite{realTimeRendering4th}, S.13 \cite{rtrPaper} u. \cite{learnOpenGL}).
