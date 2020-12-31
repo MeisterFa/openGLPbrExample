@@ -46,7 +46,7 @@
 
 \pretitle{\begin{center}\Huge\bfseries} % Article title formatting
 \posttitle{\end{center}} % Article title closing formatting
-\title{Physically based Rendering} % Article title
+\title{Physically Based Rendering} % Article title
 \author{%
 \textsc{Fabian Meister} \\[1ex] % Your name
 \normalsize Matrikelnummer: 298\,5828 \\ % Your institution
@@ -70,10 +70,10 @@
 %----------------------------------------------------------------------------------------
 
 \section{Einleitung}
-Der Begriff „\textit{Physically Based Rendering/Shading}“ (kurz PBR) beschreibt einen Oberbegriff, der verschiedene Rendering Methoden und Techniken umfasst, welche auf physikalischen Theorien und Prinzipen basieren. Die physikalischen Aspekte sind darauf ausgerichtet, die Wechselwirkung zwischen Licht und Materie so korrekt wie möglich zu modellieren
+Der Begriff „\textit{Physically Based Rendering/Shading}“ (kurz PBR) beschreibt einen Oberbegriff, der verschiedene Rendering-Methoden und Techniken umfasst, welche auf physikalischen Theorien und Prinzipen basieren. Die physikalischen Aspekte sind darauf ausgerichtet die Wechselwirkung zwischen Licht und Materie so korrekt wie möglich zu modellieren
 (vgl. S.133 \cite{openGlWolf} u. \cite{learnOpenGL}).
 
-Dennoch stellt PBR keine physikalisch korrekte Simulation des Lichtes dar, da es Approximations-funktionen verwendet, um den Arbeitsaufwand und somit die gesamt Berechnungsdauer zu verringern. Aus diesem Grund wird es Physically Based (zu dt. physikalisch basiertes) Rendering und nicht Physically Rendering genannt
+Dennoch stellt PBR keine physikalisch korrekte Simulation des Lichtes dar, da es Approximationsfunktionen verwendet, um den Arbeitsaufwand und somit die gesamte Berechnungsdauer zu verringern. Aus diesem Grund wird es Physically Based (zu dt. physikalisch basiertes) Rendering und nicht Physically Rendering genannt
 \cite{learnOpenGL}.
 
 Über die letzten Jahre wurde das Modell bereits von vielen großen und international bekannten Entwickler- und Animationsstudios umgesetzt, darunter Walt Disney
@@ -92,67 +92,38 @@ In der folgenden Arbeit wird ein Überblick über die physikalischen Grundlagen,
 Die Radiometrie ist ein Teilgebiet der Strahlungsphysik, welche sich mit der Messung von elektromagnetischer Strahlung unabhängig von dem menschlichen Auge befasst 
 (vgl. S.179f. \cite{Beyerer2016}). Da im weiteren Verlauf des Papers Fachbegriffe bzw. physikalische Größen der Radiometrie referenziert werden, werden diese im Folgenden näher erläutert. 
 
-Der \textbf{Strahlungsfluss} (physikalisches Symbol $\phi$) repräsentiert die Leistung einer Lichtquelle. Definiert ist die Leistung als die Strahlungsenergie, welche von der Quelle abgestrahlt wird pro gemessene Zeiteinheit (vgl. S.179f. \cite{Beyerer2016}). 
-\begin{equation}
-  \Phi =\dfrac{\Delta Q}{\Delta t}
-\end{equation}
+Der \textbf{Strahlungsfluss} ($\phi$) repräsentiert die Leistung einer Lichtquelle. Er ist definiert als $\Phi =\tfrac{\Delta Q}{\Delta t}$. Hierbei ist $\phi$ die differentiale Strahlungsenergie $\Delta Q$, welche von der Quelle abgestrahlt wird pro gemessene Zeiteinheit $\Delta t$ (vgl. S.179f. \cite{Beyerer2016}). 
 
-Der \textbf{Raumwinkel} (physikalisches Symbol $\omega$) funktioniert analog zum Bogenmaß im 3-dimensionalen Raum. Er ist definiert als das Verhältnis der Kugelfläche zum quadratischen Radius der Kugel. Die Fläche, welche im Bild
+Der \textbf{Raumwinkel} ($\omega$) funktioniert analog zum Bogenmaß im 3-dimensionalen Raum. Er ist definiert als das Verhältnis der Kugelfläche $A$ zum quadratischen Radius der Kugel $r^{2}$, d.h. $\omega =\tfrac{A}{r^{2}}$. Die Fläche, welche im Bild
 (\ref{fig:img6}) zu sehen ist, wird gebildet, in dem man die Form auf die Hemisphäre (Einheitskugel) projiziert. Durch den Raumwinkel wird dabei nicht nur die einnehmende Fläche auf der Hemisphäre, sondern auch die Richtung des Objektes bestimmt 
 (vgl. \cite{learnOpenGL} u. S.2 \cite{irrlichtOrg}). 
 \begin{figure}[H]
-  \centering
-  \begin{minipage}{.5\textwidth}
     \centering
-    \includegraphics*[width=0.8\linewidth]{images/solid_angle.png}
-    \caption{Raumwinkel $\omega$ \hfill \\ \footnotesize\textbf{Quelle:} DeFries\cite{learnOpenGL}}
+    \includegraphics*[width=0.4\linewidth]{images/solid_angle.png}
+    \caption{Raumwinkel $\omega$ \footnotesize\textbf{Quelle:} DeFries\cite{learnOpenGL}}
     \label{fig:img6}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{.5\textwidth}
-    \begin{equation}
-      \omega =\dfrac{A}{r^{2}}
-    \end{equation}
-  \end{minipage}
 \end{figure}
 
-Die \textbf{Strahldichte} (Symbol $L$) ist ein Maß für die Lichtabstrahlung einer Fläche. Sie definiert die Leistung einer Lichtquelle pro Raumwinkel $\omega$ und pro Flächeninhalt der emittierende Fläche $A\cdot \cos \varepsilon$. Der zusätzliche Gewichtungsfaktor $\cos \varepsilon$ im Nenner beschreibt dabei das Phänomen, dass eine Fläche unter einem Betrachtungswinkel kleiner wirkt als bei einer senkrechten Betrachtung der Fläche 
+
+Die \textbf{Strahldichte} ($L$) ist ein Maß für die Lichtabstrahlung einer Fläche, gegeben der Formel: $ L=\tfrac{\Delta \Phi \cdot }{\Delta \omega \cdot \Delta A\cdot \cos \varepsilon } $. $L$ entspricht der Leistung einer Lichtquelle pro Raumwinkel $\omega$ und pro Flächeninhalt der emittierende Fläche $A\cdot \cos \varepsilon$. Der zusätzliche Gewichtungsfaktor $\cos \varepsilon$ im Nenner beschreibt dabei das Phänomen, dass eine Fläche unter einem Betrachtungswinkel kleiner wirkt als bei einer senkrechten Betrachtung der Fläche 
 (vgl. S.8f.\cite{GrundlagenLichtTechnik}, S.36f \cite{radiometrischeGrundbegriffe} u. \cite{vgb,learnOpenGL}).
 
 Zudem gehört die Strahldichte zu den sogenannten raumwinkelabhängigen Größen. Diese besitzen keine Abhängigkeiten bezüglich der Entfernung zu der Lichtquelle. Unter der Annahme eines Vakuums verändern sich somit die Werte der Strahldichte bis zum Auftreffen auf der Oberfläche nicht. Wodurch es möglich wäre mit der Formel der Strahldichte die gesamte Verteilung des Lichtflusses zu beschreiben
 (vgl. \cite{gMueller}). 
 \begin{figure}[H]
-  \centering
-  \begin{minipage}{.5\textwidth}
     \centering
-    \includegraphics*[width=0.7 \linewidth]{images/radiance.png}
+    \includegraphics*[width=0.34 \linewidth]{images/radiance.png}
     \caption{Strahldichte $L$ unter einem Winkel $\theta$ \footnotesize\textbf{Quelle:} DeFries\cite{learnOpenGL}}
     \label{fig:img4}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{.5\textwidth}
-    \begin{equation}
-      L=\dfrac{\Delta \Phi \cdot }{\Delta \Omega \cdot \Delta A\cdot \cos \varepsilon } 
-    \end{equation}
-  \end{minipage}
 \end{figure}
 
-Die Bestrahlungsstärke (Symbol $E$) ist ein Maß für die Stärke der Lichteinstrahlung auf einer Oberfläche. Sie ist definiert als die Relation zwischen der Strahlungsfluss $\Delta \phi$, die auf eine gegebene Fläche mit dem Flächeninhalt $\Delta A$ einfällt 
+Die \textbf{Bestrahlungsstärke} ($E$) ist ein Maß für die Stärke der Lichteinstrahlung auf einer Oberfläche. Sie ist definiert als $E=\tfrac{\Delta \phi}{\Delta A}$. Hierbei ist $E$ die Relation zwischen der Strahlungsfluss $\Delta \phi$, die auf eine gegebene Fläche mit dem Flächeninhalt $\Delta A$ einfällt 
 (vgl. S.10 \cite{GrundlagenLichtTechnik}):
 \begin{figure}[H]
-  \centering
-  \begin{minipage}{.5\textwidth}
     \centering
-    \includegraphics*[width=0.8 \linewidth]{images/bestrahlungsstärke.PNG}
+    \includegraphics*[width=0.4 \linewidth]{images/bestrahlungsstärke.PNG}
     \caption{Visualisierung der Bestrahlungsstärke}
     \label{fig:bestrahlungsstaerke}
-  \end{minipage}%
-  \hfill
-  \begin{minipage}{.5\textwidth}
-    \begin{equation}
-      E=\dfrac{\Delta \phi}{\Delta A}
-    \end{equation}
-  \end{minipage}
 \end{figure}
 
 Die oben gezeigt Formel in ihrer einfachsten Form besitzt eine Vielzahl von Abhängig\-keiten (vgl. S.10 \cite{GrundlagenLichtTechnik}):
@@ -163,27 +134,27 @@ Die oben gezeigt Formel in ihrer einfachsten Form besitzt eine Vielzahl von Abh�
 \end{itemize}
 
 Um diese Abhängigkeiten mit einzubeziehen, verwendet man für Physically Based Rendering folgende Formel der Bestrahlungsstärke: 
-\begin{equation}
+\begin{equation}\label{eq:bestrahl}
   E=\int _{\Omega }L\cdot \cos \varepsilon \ d\omega
 \end{equation}
-Sie beschreibt die Bestrahlungsstärke über die Strahlungsdichte multipliziert mit einem Kosinus Faktor, welcher sich aus dem Winkel zwischen der Flächennormalen (n) und der Richtung des einfallenden Lichtstrahls ($\omega_{i}$) ergibt. Dieser Faktor repräsentiert das Lambertsches Kosinusgesetz, welches die jeweilige Geometrie der Situation (die Positionierung von Lichtquelle zur Oberfläche) mit einbezieht. Je direkter das Licht auf die Oberfläche auftrifft, umso größer ist schlussendlich die Intensität des Lichtstrahls, welche wahrgenommen werden kann 
+Sie beschreibt die Bestrahlungsstärke über die Strahlungsdichte multipliziert mit einem Kosinus Faktor $\cos \varepsilon$, welcher sich aus dem Winkel zwischen der Flächennormalen (n) und der Richtung des einfallenden Lichtstrahls ($\omega_{i}$) ergibt. Dieser Faktor repräsentiert das Lambertsches Kosinusgesetz, welches die jeweilige Geometrie der Situation (die Positionierung von Lichtquelle zur Oberfläche) mit einbezieht. Je direkter das Licht auf die Oberfläche auftrifft, umso größer ist schlussendlich die Intensität des Lichtstrahls, welche wahrgenommen werden kann 
 (vgl. S.21f \cite{GRAY197813} u. \cite{Ryer97lightmeasurement,renderingEquationArticle}).
 
-Um letzten Endes die Gesamtmenge des auf die Fläche fallenden Lichts zu errechnen, wird die Summe der Strahldichten aller Lichtquelle gemessen. Physikalisch korrekt wird hierzu die Summe als Integral über die Hemisphäre $\Omega$ gebildet. 
+Um die Gesamtmenge des auf die Fläche fallenden Lichts zu errechnen, wird die Summe der Strahldichten aller Lichtquelle gemessen. Physikalisch korrekt wird hierzu die Summe als Integral über die Hemisphäre $\Omega$ gebildet. 
 \section{Reflectance Equation}\label{sec:reflac}
 Wie bereits in der Einleitung erwähnt, wird beim Physically Based Rendering die Interaktion zwischen dem Licht und den Materialen eines Objektes modelliert. Um dies zu berechnen, verwendet das PBR eines der derzeit besten Modelle zur Simulation der visuellen Erscheinungen des Lichtes, die sogenannte Reflectance Equation (zu dt. Reflexions-Gleichung) 
 (vgl. \cite{learnOpenGL}). 
 \begin{equation}
-  L_{o}\left( p,\omega _{o}\right) =\int _{\Omega }f_{r}\left( p,w_{i},W_{o}\right)L_{i}\left( p,w_{i}\right)n\cdot w_{i} \ dw_{i}
+  L_{o}\left( p,\omega _{o}\right) =\int _{\Omega }f_{r}\left( p,\omega_{i},\omega_{o}\right)L_{i}\left( p,\omega_{i}\right)n\cdot \omega_{i} \ d\omega_{i}
 \end{equation}
 
-Diese Formel ist eine Vereinfachung bzw. eine Spezialisierung der Render Equation (zu dt. Render Gleichung), welche 1986 von David Immel et al. und James Kajiyain, in ihrem Artikel „\textit{The Rendering Equation}“ (vgl. \cite{theRenderingEquation}) vorgestellt wurde. Mit ihr lässt sich die Strahldichte ($L_{o}$) berechnen, welche im Kapitel (\ref{sec:radiometrie}) bereits detailliert beschrieben wurde. Die Strahldichte im speziellen Fall der Reflectance Equation liefert eine Aussage über die Gesamtmenge an Licht, welche von einem Punkt ($p$) ausgehend entlang einer bestimmten Blickrichtung ($\omega_{o}$) reflektiert wird. Dabei ist die Intensität der reflektierenden Strahlung abhängig von der Menge an Licht, welche in dem jeweiligen Punkt auftrifft und der Wechselwirkung des Lichts mit der Oberfläche (vgl. \cite{learnOpenGL}). 
+Diese Formel ist eine Vereinfachung bzw. eine Spezialisierung der Render Equation (zu dt. Render Gleichung), welche 1986 von David Immel et al. und James Kajiyain, in ihrem Artikel „\textit{The Rendering Equation}“ (vgl. \cite{theRenderingEquation}) vorgestellt wurde. Mit ihr lässt sich die Strahldichte ($L_{o}$) berechnen, welche im Kapitel (\ref{sec:radiometrie}) bereits detailliert beschrieben wurde. Die Strahldichte im speziellen Fall der Reflectance Equation liefert eine Aussage über die Gesamtmenge an Licht, welche von einem Punkt ($p$) ausgehend entlang einer bestimmten Blickrichtung ($\omega_{o}$) reflektiert wird. Dabei ist die Intensität der reflektierenden Strahlung abhängig von der Menge an Licht, welche in dem jeweiligen Punkt auftrifft $L_{i}\left( p,\omega_{i}\right)n\cdot \omega_{i}$ und der Wechselwirkung des Lichts mit der Oberfläche $f_{r}\left( p,\omega_{i},\omega_{o}\right)$ (vgl. \cite{learnOpenGL}). 
 
 Ersteres wird durch die sogenannte Bestrahlungsstärke aus dem Kapitel (\ref{sec:radiometrie}) erfasst. Letzteres wird durch die Bidirectional Reflective Distribution Function (kurz BRDF) ausgedrückt. Auf die BRDF und deren einzelnen Funktionen, wird in einem späteren Kapitel im Detail eingegangen. Das Ergebnis aus BRDF und Bestrahlungsstärke wird anschließend mit einem Kosinus Faktor gewichtet, welcher das Lambertsche Kosinusgesetz aus Kapitel (\ref{sec:radiometrie}) repräsentiert 
 (vgl. S.133f. \cite{openGlWolf} u. \cite{learnOpenGL}).
 
 \subsection{Bidirectional Reflective Distribution Function}
-Das Reflexionsverhalten eines Objektes ist im Allgemeinen bestimmt durch den Ein-/Ausfallswinkel des Lichtes und das Material aus, welchem es besteht. So lässt sich beispielsweise in der Natur unter gleichbleibenden Beleuchtungsverhältnissen bei verschiedenartigen Materialien ein unterschiedlich starker Glanz beobachten. Dieses Verhalten wird durch die BRDF ausgedrückt, welche 1977 amtlich vom National Bureau of Standards (USA) definiert wurde, um Reflexionsdarstellungen und -berechnungen zu vereinheitlichen 
+Das Reflexionsverhalten eines Objektes ist im Allgemeinen bestimmt durch den Ein- und Ausfallswinkel des Lichtes und das Material aus, welchem es besteht. So lässt sich beispielsweise in der Natur unter gleichbleibenden Beleuchtungsverhältnissen bei verschiedenartigen Materialien ein unterschiedlich starker Glanz beobachten. Dieses Verhalten wird durch die BRDF ausgedrückt, welche 1977 amtlich vom National Bureau of Standards (USA) definiert wurde, um Reflexionsdarstellungen und -berechnungen zu vereinheitlichen 
 (vgl. S.1 \cite{irrlichtOrg} u. S.2 \cite{uniUlm}). In ihrer Grundform beschreibt die BRDF den Zusammenhang zwischen der differentiellen Strahldichte in der Betrachtungsrichtung und der differentiellen Bestrahlungsstärke, welche aus der Beleuchtungsrichtung auf die Oberfläche einwirkt 
 (vgl. S.3 \cite{irrlichtOrg}). Vereinfacht ausgerückt beschreibt die BRDF den Anteil eines Lichtstrahles, welcher beim Betrachter ankommt.
 \begin{equation}
@@ -198,19 +169,19 @@ Damit eine BRDF auch ein physikalisches Modell darstellen kann, müssen folgende
   \item Die Superposition ist eine weitere häufig genannte Eigenschaft von BRDFs. Sie besagt, dass Lichtstrahlen, welche auf den gleichen Punkt einer Oberfläche auftreffen, keinen Einfluss aufeinander auswirken. 
 \end{enumerate} 
 
-\subsection{Metalle und Nicht Metalle}
+\subsection{Metalle und Nicht-Metalle}
 Um die Theorien bzw. Funktionsweisen der BRDFs in den folgenden Kapiteln besser verstehen zu können, muss zunächst das unterschiedliche Verhalten von metallischen (Leiter) und nichtmetallischen (Dielektrikum) Oberflächen bei Lichteinwirkung verdeutlicht werden.
 
-Trifft ein Lichtstrahl auf eine Oberfläche, dann wird das Licht in einen Brechungsanteil und einen Reflexionsanteil aufgeteilt. Der Reflexionsteil ist das Licht, welches direkt von der Oberfläche reflektiert wird und dabei nicht in das Material eindringt. Diese Art der Reflexion wird auch Spiegelnde Reflexion (dt. für Specular reflection) genannt. Sie folgt dem physikalischen Reflexionsgesetz, welches besagt, dass auf einer vollkommen ebenen Oberfläche der Reflexionswinkel gleich dem Einfallswinkel ist. Jedoch sind die meisten Oberflächen nicht perfekt plan, weswegen die Richtung der Reflexion von der Oberflächenrauheit abhängt. Auf raueren Oberflächen erscheinen die Reflexionen der Lichter insgesamt zerstreuter und gleichzeitig dunkler. Bei glatteren Oberflächen bleiben die Spiegelreflexionen fokussiert, und erscheinen dabei intensiver. Der Brechungsanteil ist der verbleibende Anteil des Lichtes, welcher in das Material gebrochen wird. Im inneren trifft das Licht auf mikroskopisch kleine Unterschiede in der Materialdichte. Hierbei wird es an den Grenzen zwischen den verschiedenen Dichten abermals gestreut, gebrochen bzw. reflektiert und zum Teil wieder als diffuse Reflexion zufällig in den Raum zurück reflektiert. Im Laufe dieses Prozesses absorbiert das Material teilweise die Energie des Lichtes. Bewegt es sich zu lange in einem solchen Material, kann es vollständig absorbiert werden. Infolgedessen hat das Licht, welches dieses Material tatsächlich verlässt, wahrscheinlich nur eine sehr geringe Entfernung vom Eintrittspunkt zurückgelegt. Daher kann der Abstand zwischen dem Eintritts- und Austrittspunkt als vernachlässigbar gering angesehen werden 
+Trifft ein Lichtstrahl auf eine Oberfläche, dann wird das Licht in einen Brechungsanteil und einen Reflexionsanteil aufgeteilt. Der Reflexionsteil ist das Licht, welches direkt von der Oberfläche reflektiert wird und dabei nicht in das Material eindringt. Diese Art der Reflexion wird auch spiegelnde Reflexion (dt. für specular reflection) genannt. Sie folgt dem physikalischen Reflexionsgesetz, welches besagt das auf einer vollkommen ebenen Oberfläche der Reflexionswinkel gleich dem Einfallswinkel ist. Jedoch sind die meisten Oberflächen nicht perfekt plan, weswegen die Richtung der Reflexion von der Oberflächenrauheit abhängt. Auf raueren Oberflächen erscheinen die Reflexionen der Lichter insgesamt zerstreuter und gleichzeitig dunkler. Bei glatteren Oberflächen bleiben die Spiegelreflexionen fokussiert, und erscheinen dabei intensiver. Der Brechungsanteil ist der verbleibende Anteil des Lichtes, welcher in das Material gebrochen wird. Im inneren trifft das Licht auf mikroskopisch kleine Unterschiede in der Materialdichte. Hierbei wird es an den Grenzen zwischen den verschiedenen Dichten abermals gestreut, gebrochen bzw. reflektiert und zum Teil wieder als diffuse Reflexion zufällig in den Raum zurück reflektiert. Im Laufe dieses Prozesses absorbiert das Material teilweise die Energie des Lichtes. Bewegt es sich zu lange in einem solchen Material, kann es vollständig absorbiert werden. Infolgedessen hat das Licht, welches dieses Material tatsächlich verlässt, wahrscheinlich nur eine sehr geringe Entfernung vom Eintrittspunkt zurückgelegt. Daher kann der Abstand zwischen dem Eintritts- und Austrittspunkt als vernachlässigbar gering angesehen werden 
 (vgl. S.5 \cite{irrlichtOrg}, S.305f./316f. \cite{realTimeRendering4th}, S.6/11 \cite{rtrPaper} u. \cite{learnOpenGL,pbrGuide,googleFilamentPbr}).
 \begin{figure}[H]
   \centering
   \includegraphics*[width=0.65 \textwidth]{images/scattering.png}
-  \caption{Reflexion und Brechung beim auftreffen eines Lichtstrahles \footnotesize\textbf{Quelle:} Hoffman, S.9 \cite{rtrPaper}}
+  \caption{Reflexion und Brechung beim Auftreffen eines Lichtstrahles \footnotesize\textbf{Quelle:} Hoffman, S.9 \cite{rtrPaper}}
   \label{fig:img10}
 \end{figure}
 
-Metalle besitzen einen sehr hohen Absorptionskoeffizienten für die Strahlung im sichtbaren Spektrum, da das gebrochene Licht sofort von freien Elektronen absorbiert wird. Infolgedessen verlässt das gebrochene Licht die Oberfläche des Metalls nicht. Daher muss bei der diffusen Reflexion zwischen Leitern und Dielektrika unterschieden werden. Rein metallischen Materialien besitzen somit keine diffuse Reflexion. Eine Streuung des Lichtes unter der Oberfläche findet nur bei den Dielektrika statt, d.h. sie allein besitzen sowohl spiegelnde als auch diffuse Komponenten. Zuletzt könnte man noch zwischen Halbleiter (Semiconductor) unterscheiden. Diese werden aber in der Regel aus Einfachheit zu den nicht Metallen gezählt 
+Metalle besitzen einen sehr hohen Absorptionskoeffizienten für die Strahlung im sichtbaren Spektrum, da das gebrochene Licht sofort von freien Elektronen absorbiert wird. Infolgedessen verlässt das gebrochene Licht die Oberfläche des Metalls nicht. Daher muss bei der diffusen Reflexion zwischen Leitern und Dielektrika unterschieden werden. Rein metallische Materialien besitzen somit keine diffuse Reflexion. Eine Streuung des Lichtes unter der Oberfläche findet nur bei den Dielektrika statt, d.h. sie allein besitzen sowohl spiegelnde als auch diffuse Komponenten. Zuletzt könnte man noch Halbleiter (Semiconductor) betrachten. Diese werden aber in der Regel aus Einfachheit zu den Nicht-Metallen gezählt 
 (vgl. S8 \cite{rtrPaper} u. \cite{pbrGuide,learnOpenGL,googleFilamentPbr}).
 
 Möchte man im Folgenden die gesamte Reflexion einer Oberfläche berechnen, so errechnet man einmal die Diffuse und die Spiegelnde separat voneinander und addiert diese anschließend (vgl. \cite{learnOpenGL}) (wie im Bild \ref{fig:img1} dargestellt).
@@ -222,13 +193,13 @@ Möchte man im Folgenden die gesamte Reflexion einer Oberfläche berechnen, so e
 \end{figure}
 
 \subsection{Lambert Diffuse BRDF}
-Die Lambert Diffuse BRDF ist das einfachste BRDF-Modell, um diffuse Reflexion zu modellieren. Es basiert auf der Idee, dass alle Oberflächen perfekt diffuse und somit sogenannte Lambertsche Flächen bzw. Lambertschen Reflektoren sind. Ein Lambertscher Reflektor beschreibt eine Fläche, bei der die Strahldichte der Reflexion in jedem Punkt über die gesamte Fläche und in alle Richtungen gleich groß ist. Vereinfacht gesagt beschreibt es eine Oberfläche, welche das eintreffende Licht in alle Richtungen gleichmäßig verstreut. Da in jedem Punkt die Lichtstreuung identisch ist, muss das Verhältnis von eingehender zu ausgehender Beleuchtung konstant sein und somit auch die BRDF 
+Die Lambert Diffuse BRDF ist das einfachste BRDF-Modell, um diffuse Reflexion zu modellieren. Es basiert auf der Idee, dass alle Oberflächen perfekt diffus und somit sogenannte Lambertsche Flächen bzw. Lambertschen Reflektoren sind. Ein Lambertscher Reflektor beschreibt eine Fläche, bei der die Strahldichte der Reflexion in jedem Punkt über die gesamte Fläche und in alle Richtungen gleich groß ist. Vereinfacht gesagt beschreibt es eine Oberfläche, welche das eintreffende Licht in alle Richtungen gleichmäßig verstreut. Da in jedem Punkt die Lichtstreuung identisch ist, muss das Verhältnis von eingehender zu ausgehender Beleuchtung konstant sein und somit auch die BRDF 
 (vgl. S.313f. \cite{realTimeRendering4th}, S.5f. \cite{irrlichtOrg} u. \cite{learnOpenGL}). 
 \begin{equation}
   f_{Lambert}=\dfrac{c}{\pi}
 \end{equation}
 
-Der konstante Reflexionswert einer Lambertschen Diffuse BRDF wird allgemein als die diffuse Farbe oder Albedo bezeichnet und besitzt Werte, die zwischen 0 und 1 liegen können. Der Faktor $\nicefrac{1}{\pi}$ ergibt sich dabei aus der Integration eines Kosinus Faktors über die Halbkugel 
+Der konstante Reflexionswert ($c$) einer Lambertschen Diffuse BRDF wird allgemein als die diffuse Farbe oder Albedo bezeichnet und besitzt Werte, die zwischen 0 und 1 liegen können. Der Faktor $\nicefrac{1}{\pi}$ ergibt sich dabei aus der Integration eines Kosinus Faktors über die Halbkugel 
 (vgl. S.314 \cite{realTimeRendering4th})
 
 Obwohl dieses Reflexionsmodell physikalisch nicht plausibel ist, stellt es eine solide Annäherung an viele reale Oberflächen dar. Außerdem ist die Lambertsche Diffuse BRDF äußerst effizient, da nur mit konstanten Werten gerechnet werden muss. Dennoch muss zuletzt erwähnt werden, dass es verschiedene Gleichungen für den diffusen Teil der BRDF gibt, die tendenziell realistischer aussehen, allerdings auch einen größeren Rechenaufwand benötigen (vgl. \cite{learnOpenGL}).
@@ -250,14 +221,14 @@ Wie bereits in einem vorherigen Kapitel angesprochen sind Oberflächen nie perfe
   \begin{minipage}{.48\textwidth}
     \centering
     \includegraphics*[width=1\linewidth]{images/microfacets_light_rays1.png}
-    \caption{Visualisierung einer rauen Oberfläche im Microfacet-Model \footnotesize\textbf{Quelle:} DeFries \cite{learnOpenGL}}
+    \caption{Visualisierung einer rauen Oberfläche im Mikro\-facetten-Model \footnotesize\textbf{Quelle:} DeFries \cite{learnOpenGL}}
     \label{fig:img2_1}
   \end{minipage}%
   \hfill
   \begin{minipage}{.48\textwidth}
     \centering
     \includegraphics*[width=1\linewidth]{images/microfacets_light_rays2.png}
-    \caption{Visualisierung einer glatten Oberfläche im Microfacet-Model \footnotesize\textbf{Quelle:} DeFries \cite{learnOpenGL}}
+    \caption{Visualisierung einer glatten Oberfläche im Mikro\-facetten-Model \footnotesize\textbf{Quelle:} DeFries \cite{learnOpenGL}}
     \label{fig:img2_2}
   \end{minipage}
 \end{figure}
@@ -320,7 +291,7 @@ Um die Geometrie effektiv approximieren zu können, muss sowohl die Blickrichtun
   G_{Smith}\left( n,v,l,k\right) =G_{sub}\left( n,v,k\right) \cdot G_{sub}\left( n,l,k\right)
 \end{eqnarray}
 \subsubsection{Fresnel Gleichung}\label{sec:fresnel}
-Wie bereits aus einem Vorherigen Kapitel bekannt ist, wird Licht, wenn es auf eine Oberfläche auftrifft in einen Reflektierenden und einen Gebrochenen Anteil aufgeteilt. Die Teilmenge des Reflektieren Lichtes wird durch die sogenannte Fresnel Gleichung (dt. für Fresnel Equation) $F$ beschrieben, welche von Augustin-Jean Fresnel erfunden wurde. Die Ergebnisse der Funktion variieren in Abhängigkeit von zwei Faktoren: dem Einfallswinkel (Winkel zwischen Lichtvektor und Oberflächennormale) und dem Brechungsindex des Materials. Die Werte befinden sich dabei immer zwischen 0 und 1. Der Grund hierfür ist, dass eine Fläche nicht weniger als 0 \% oder mehr als 100 \% des einfallenden Lichtes reflektieren kann. Außerdem ist das Endergebnis als ein RGB-Vektor definiert. Hierdurch wird der Fresnel-Effekt für alle drei Farbkanäle modelliert 
+Wie bereits aus einem vorherigen Kapitel bekannt ist, wird Licht, wenn es auf eine Oberfläche auftrifft, in einen Reflektierenden und einen Gebrochenen Anteil aufgeteilt. Die Teilmenge des Reflektieren Lichtes wird durch die sogenannte Fresnel Gleichung (dt. für Fresnel Equation) $F$ beschrieben, welche von Augustin-Jean Fresnel erfunden wurde. Die Ergebnisse der Funktion variieren in Abhängigkeit von zwei Faktoren: dem Einfallswinkel (Winkel zwischen Lichtvektor und Oberflächennormale) und dem Brechungsindex des Materials. Die Werte befinden sich dabei immer zwischen 0 und 1. Der Grund hierfür ist, dass eine Fläche nicht weniger als 0 \% oder mehr als 100 \% des einfallenden Lichtes reflektieren kann. Außerdem ist das Endergebnis als ein RGB-Vektor definiert. Hierdurch wird der Fresnel-Effekt für alle drei Farbkanäle modelliert 
 (vgl. S.316ff.\cite{realTimeRendering4th}, S.13f. \cite{rtrPaper}). Die Folgende Grafik veranschaulicht für verschiedenen Materialien den Zusammenhang des Reflexionsanteiles in Abhängigkeit zum Eintrittswinkel:
 \begin{figure}[H]
   \centering
@@ -329,9 +300,9 @@ Wie bereits aus einem Vorherigen Kapitel bekannt ist, wird Licht, wenn es auf ei
   \label{fig:img5}
 \end{figure}
 
-In dem Diagramm fällt auf, dass der Reflexionsgrad bei einem Einfallswinkel von 0◦ bis etwa 45◦ nahezu konstant und am Niedrigsten ist.  Zwischen 45◦und ca. 75◦ verändert sich der Reflexionsgrad deutlicher. Im weiteren Verlauf des Reflexionsgrads zwischen 75◦und 90◦ strebt dieser fast exponentiell immer gegen 1. Des Weiteren zeigt die Grafik das Metalle, wie beispielweise Kupfer, unterschiedliche Werte für die drei Farbkanäle Rot, Grün und Blau besitzen. Aufgrund dessen haben Metalle einen farblichen Glanz, welcher für Kuper z.B. eher rötlich ist und je nach Auftrittswinkel des Lichtes stärker oder weniger stark durchkommt. 
+In dem Diagramm fällt auf, dass der Reflexionsgrad bei einem Einfallswinkel von $0^\circ$ bis etwa $45^\circ$ nahezu konstant und am Niedrigsten ist. Zwischen $45^\circ$ und ca. $75^\circ$ verändert sich der Reflexionsgrad deutlicher. Im weiteren Verlauf des Reflexionsgrads zwischen $75^\circ$ und $90^\circ$ strebt dieser fast exponentiell immer gegen 1. Des Weiteren zeigt die Grafik das Metalle, wie beispielweise Kupfer, unterschiedliche Werte für die drei Farbkanäle Rot, Grün und Blau besitzen. Aufgrund dessen haben Metalle einen farblichen Glanz, welcher für Kuper z.B. eher rötlich ist und je nach Auftrittswinkel des Lichtes stärker oder weniger stark durchkommt. 
 
-Zu erkennen ist außerdem, dass Metalle grundsätzlich einen deutlich höheren Reflexionsgrad als Dielektrika besitzen. Tatsächlich haben die Dielektrika bei 0 Grad Einfallswinkel ($F(0)$) einen Reflexionsanteil von 1\% bis maximal 17\%, während Metalle einen Anteil größer gleich 50\% besitzen. Da der Fresnel-Reflexionsgrad im Bereich von 0 Grad bis 45 Grad nahezu identisch ist, wird bei 0 Grad der Wert der Fresnel-Gleichung als das Basis-Reflexionsvermögen des Materials bezeichnet. Dieser stellt eine wichtige Konstant bei der Berechnung der Fresnel-Gleichung dar und wird im Folgenden als $F_{0}$ bezeichnet. $F_{0}$ lässt sich dabei mit Hilfe des sogenannten Brechungsindexes (dt. für indices of refraction) berechnen 
+Zu erkennen ist außerdem, dass Metalle grundsätzlich einen deutlich höheren Reflexionsgrad als Dielektrika besitzen. Tatsächlich haben die Dielektrika bei $0^\circ$ Einfallswinkel ($F(0)$) einen Reflexionsanteil von 1\% bis maximal 17\%, während Metalle einen Anteil größer gleich 50\% besitzen. Da der Fresnel-Reflexionsgrad im Bereich von $0^\circ$ bis $45^\circ$ nahezu identisch ist, wird bei $0^\circ$ der Wert der Fresnel-Gleichung als das Basis-Reflexionsvermögen des Materials bezeichnet. Dieser stellt eine wichtige Konstant bei der Berechnung der Fresnel-Gleichung dar und wird im Folgenden als $F_{0}$ bezeichnet. $F_{0}$ lässt sich dabei mit Hilfe des sogenannten Brechungsindexes (dt. für indices of refraction) berechnen 
 (vgl. S.321 \cite{realTimeRendering4th}, S.13 \cite{rtrPaper} u. \cite{learnOpenGL}).
 
 Die vollständigen Fresnel-Gleichungen ist sehr komplex und benötigt einige Materialparameter, wodurch diese Funktion nicht besonders einfach für Künstler und Entwickler zu benutzen ist. Wie bei den anderen Funktionen auch wird bei der Fresnel-Gleichung eine Approximationsfunktion genutzt, die Sogenannte Fresnel-Schlick Approximation, welche Folgende Form besitzt (vgl. \cite{learnOpenGL}): 
@@ -339,7 +310,7 @@ Die vollständigen Fresnel-Gleichungen ist sehr komplex und benötigt einige Mat
   F_{Schlick}\left( h,v,F_{0}\right) =F_{0}+\left( 1-F_{0}\right) \cdot \left( 1-\left( h\cdot v\right) \right) ^{5}
 \end{equation}
 
-Es fällt auf, dass die Fresnel-Schlick Funktion nicht die Oberflächennormale n sondern den Halfway-Verktor h zur Berechnung des Eintrittes Winkels verwendet. Dies hängt damit zusammen, dass bei der Fresnel-Gleichung nur die aktiven Mikrofacetten betrachtet werden. Für die Oberflächennormale m einer Mikrofacette gilt m = h. Somit wird auch bei der Fresnel-Gleichung die Orientierung der Mikrofacetten mit einbezogen. 
+Es fällt auf, dass die Fresnel-Schlick Funktion nicht die Oberflächennormale n sondern den Halfway-Verktor h zur Berechnung des Eintritteswinkels verwendet. Dies hängt damit zusammen, dass bei der Fresnel-Gleichung nur die aktiven Mikrofacetten betrachtet werden. Für die Oberflächennormale m einer Mikrofacette gilt m = h. Somit wird auch bei der Fresnel-Gleichung die Orientierung der Mikrofacetten mit einbezogen. 
 
 Des Weiteren ist es möglich bei der Berechnung der Fresnel-Gleichung noch zusätz\-liche Annährung zu machen. Für die dielektrischen Oberflächen wird beispielweise ein fester Basisreflexionsgrad gesetzt ($F_{0}$ = 0,04), welcher dennoch zu physikalisch plausiblen Ergebnissen führt (vgl. \cite{learnOpenGL}).
 
@@ -400,7 +371,7 @@ Auf eine nahezu homogene Art und Weise funktioniert die Maussteuerung des Progra
   scene->updateMouseMovement(xpos, ypos);
 \end{lstlisting}
 
-Beide Koordinaten werden anschließend an die Kameraklasse weitergereicht, welche die Neuberechnung der Kameraorientierung übernimmt. Damit die Kamera Klasse korrekt funktioniert (und der Nutzer sich 360 Grad umsehen kann), muss der Mauszeiger deaktiviert werden. In Folge dessen wurden zwei Tasten mit der Funktion der Deaktivierung und Aktivierung des Mauszeigers belegt. In der Zeit, in welcher der Mauszeiger aktiviert ist, ist das Aktualisieren der Mauszeigerposition nicht notwendig und wird durch folgende Codezeile verhindert: 
+Beide Koordinaten werden anschließend an die Kameraklasse weitergereicht, welche die Neuberechnung der Kameraorientierung übernimmt. Damit die Kamera Klasse korrekt funktioniert (und der Nutzer sich $360^\circ$ umsehen kann), muss der Mauszeiger deaktiviert werden. In Folge dessen wurden zwei Tasten mit der Funktion der Deaktivierung und Aktivierung des Mauszeigers belegt. In der Zeit, in welcher der Mauszeiger aktiviert ist, ist das Aktualisieren der Mauszeigerposition nicht notwendig und wird durch folgende Codezeile verhindert: 
 \begin{lstlisting}[ caption={If-Abfrage ob derzeitiger Cursor deaktiviert ist}]
   if (glfwGetInputMode(window, GLFW_CURSOR) == GLFW_CURSOR_DISABLED)
 \end{lstlisting}
@@ -444,7 +415,7 @@ Zuletzt wurde der Fragment-Shader von David Wolf angepasst. Dieser ist eine Umse
 \end{equation} 
 Im Shader wurde zuerst der \textit{MaterialInfo}-uniform struct, um einen float alpha, erweitert. Dieser repräsentiert die Rauheit $\alpha$, welche in der Verteilungsfunktion der Normalen $D$ benötigt wird. Es wäre möglich gewesen alpha erst im Shader selbst zu berechnen. Dennoch macht es rein didaktisch Sinn diesen Wert als eigenen Eingabeparameter zu betrachten, da die einzelnen Funktionen somit den realen Formeln noch mehr entsprechen. 
 
-Des Weiteren wurden syntaktische und semantische Korrekturen an David Wolfs Shader vorgenommen. Beispielsweise hatte David Wolf die Funktion für die Geometry\-SchlickGGX-Approximation fälschlicherweise als GeometrieSmith benannt, siehe Folgenden Codeabschnitt:
+Des Weiteren wurden syntaktische und semantische Korrekturen an David Wolfs Shader vorgenommen. Beispielsweise hatte David Wolf die Funktion für die Geometry\-SchlickGGX-Approximation fälschlicherweise als GeometrieSmith benannt, siehe folgenden Codeabschnitt:
 \begin{lstlisting}[tabsize=2, caption={Geometrie-Funktion aus dem Fragment-Shader von David Wolf}]
   float geomSmith( float dotProd ) {
     float k = (Material.Rough + 1.0) * (Material.Rough + 1.0) / 8.0;
